@@ -3,10 +3,8 @@ import { TouchableOpacity, SafeAreaView, StyleSheet, View, Text, ScrollView } fr
 import Button from "./components/Button";
 import { Icon } from "react-native-elements";
 import { t } from "react-native-tailwindcss";
-import { useAuth } from '../../context/AuthContext';
 
 function SettingsScreen({ navigation }) {
-    const { logoutUser } = useAuth();
 
     return (
         <SafeAreaView style={[t.flex, t.justifyCenter, t.itemsCenter]}>
@@ -45,7 +43,7 @@ function SettingsScreen({ navigation }) {
                 </View>
 
                 <View style={[styles.container, t.mT3, t.mB10]}>
-                    <Button text="Logout" icon="exit-outline" onPress={() => logoutUser()} />
+                    <Button text="Logout" icon="exit-outline" />
                 </View>
             </ScrollView>
         </SafeAreaView>

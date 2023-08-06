@@ -3,8 +3,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { StyleSheet } from 'react-native';
 
 import HomeStack from '../home/HomeStack';
-// import GamesStack from '../games/GamesStack';
-// import ProfileStack from '../profile/ProfileStack';
+import GamesStack from '../games/GamesStack';
+import ProfileStack from '../profile/ProfileStack';
 
 import Tab from './components/Tab'
 import { icons } from '../../constants';
@@ -39,7 +39,7 @@ const TabStack = () => {
             tabBarIcon: ({focused}) => <Tab focused={focused} size={25} unfocused_icon={icons.cardstackIconUnfilled} focused_icon={icons.cardstackIconFilled} />
           }}
         />
-        {/* <BottomTab.Screen name="" component={GamesStack} options={{
+        <BottomTab.Screen name="Games" component={GamesStack} options={{
             tabBarIcon: ({focused}) => <Tab focused={focused} size={25} unfocused_icon={icons.discoverIconUnfilled} focused_icon={icons.discoverIconFilled} />
           }}
         />
@@ -47,7 +47,7 @@ const TabStack = () => {
         options={{
             tabBarIcon: ({focused}) => <Tab focused={focused} size={20} unfocused_icon={icons.profileIconUnfilled} focused_icon={icons.profileIconFilled} />
           }}
-      /> */}
+      />
     </BottomTab.Navigator>
   );
 }

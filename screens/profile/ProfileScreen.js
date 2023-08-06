@@ -1,7 +1,6 @@
 import React from "react";
 import { SafeAreaView, View, Text, Image, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import { t } from "react-native-tailwindcss";
-import { useAuth } from "../../context/AuthContext";
 import { icons } from '../../constants';
 import InterestOption from './components/InterestOption';
 import SettingsButton from './components/SettingsButton';
@@ -10,7 +9,6 @@ import { COLORS } from '../../constants';
 import { Center } from "native-base";
 
 function ProfileScreen({ navigation }) {
-    const { currentProfile } = useAuth();
 
     return (
         <SafeAreaView>
@@ -45,7 +43,7 @@ function ProfileScreen({ navigation }) {
                         <View>
 
                             <Text style={[t.mL2, styles.subTitle]}>
-                                Professional Coder, 19 years old
+                                Coder, 19 years old
                             </Text>
                         </View>
 
@@ -63,7 +61,7 @@ function ProfileScreen({ navigation }) {
                 <View style={[t.mX6, t.mT8]}>
                     <Text style={[t.mT7, styles.subHeader]}>About</Text>
                         <Text style={[t.mL2, styles.aboutText]}>
-                            I have been coding since I was 11 years old and I just graduated from Hwa Chong Junior College. I am currently serving full time as a National Serviceman in the SAF.
+                            I just graduated from Hwa Chong Junior College. I am currently serving  in the SAF.
                         </Text>
                 </View>
 
