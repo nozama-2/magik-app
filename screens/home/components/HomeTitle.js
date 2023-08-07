@@ -5,8 +5,8 @@ import { View, Text, StyleSheet } from 'react-native';
 const HomeTitle = () => {
     return (
         <View style={[t.flex, t.flexCol]}>
-            <Text style={[t.textGray800, styles.title]}>Discover</Text>
-            <Text style={[t.textGray800, styles.text]}>Bishan</Text>
+            <Text style={[t.textGray800, styles.title]}>Magik</Text>
+            <Text style={[t.textGray800, styles.text]}>Revolutionalising Play</Text>
         </View>
     )
 }
@@ -14,6 +14,7 @@ const HomeTitle = () => {
 const styles = StyleSheet.create({
     title: {
         fontFamily: "Poppins-Bold",
+        fontWeight: 700,
         fontSize: 20,
         alignSelf: 'center',
     },

@@ -23,16 +23,12 @@ export default function App() {
   const colorScheme = useColorScheme();
 
   const [isLoaded, setIsLoaded] = useState(false);
-
+  
     const loadFonts = async () => {
         await Font.loadAsync({
-            "Poppins-Normal": require("./assets/fonts/Poppins-Regular.ttf"),
-            "Poppins-Bold": require("./assets/fonts/Poppins-Bold.ttf"),
-            "Poppins-Thin": require("./assets/fonts/Poppins-Thin.ttf"),
-            "Poppins-SemiBold": require("./assets/fonts/Poppins-SemiBold.ttf"),
-            "Poppins-Medium": require("./assets/fonts/Poppins-Medium.ttf"),
-            "Poppins-Light": require("./assets/fonts/Poppins-Light.ttf"),
             "Poppins-Regular": require("./assets/fonts/Poppins-Regular.ttf"),
+            "Poppins-Thin": require("./assets/fonts/Poppins-Thin.ttf"),
+            "Poppins-Light": require("./assets/fonts/Poppins-Light.ttf"),
         });
         setIsLoaded(true);
     };
@@ -41,13 +37,12 @@ export default function App() {
         loadFonts();
     }, [])
 
-  if (!(isLoadingComplete && isLoaded)) {
+  if (!(isLoadingComplete)) {
     return null;
   } else {
     return (
       // <SafeAreaProvider>
       //   <Navigation colorScheme={colorScheme} />
-      //   <StatusBar />
       // </SafeAreaProvider>
 
         <NativeBaseProvider>

@@ -40,12 +40,11 @@ function ProfileScreen({ navigation }) {
 
                         <Text style={[t.mT4, styles.header]}>Cedric Khua</Text>
 
-                        <View>
-
+                        {/* <View>
                             <Text style={[t.mL2, styles.subTitle]}>
                                 Coder, 19 years old
                             </Text>
-                        </View>
+                        </View> */}
 
                         <View style={[t.mT5]}>
                             <TouchableOpacity style={[styles.button, t.itemsCenter, styles.shadow]}>
@@ -74,17 +73,6 @@ function ProfileScreen({ navigation }) {
                             <InterestOption selected={false} interestText="Badminton" />
                         </View>
                     </View>
-                </View>
-
-                <View style={[t.mX6, t.mB8, t.mL6]}>
-                    <Text style={[styles.subHeader]}>Gallery</Text>
-
-                    <View style={styles.galleryContainer}>
-
-                        <PhotoGallery />
-                        
-                    </View>
-
                 </View>
             </ScrollView>
         </SafeAreaView>

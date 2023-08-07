@@ -1,19 +1,19 @@
 // Tab Icons
-export const cardstackIconFilled = require("../assets/icons/tab_icons/cardstack_icon_filled.png");
-export const cardstackIconUnfilled = require("../assets/icons/tab_icons/cardstack_icon_unfilled.png");
-export const matchesIconFilled = require("../assets/icons/tab_icons/matches_icon_filled.png");
-export const matchesIconUnfilled = require("../assets/icons/tab_icons/matches_icon_unfilled.png");
-export const discoverIconFilled = require("../assets/icons/tab_icons/discover_icon_filled.png");
-export const discoverIconUnfilled = require("../assets/icons/tab_icons/discover_icon_unfilled.png");
-export const chatIconFilled = require("../assets/icons/tab_icons/chat_icon_filled.png");
-export const chatIconUnfilled = require("../assets/icons/tab_icons/chat_icon_unfilled.png");
+export const homeIconFilled = require("../assets/icons/tab_icons/home_icon_filled.png");
+export const homeIconUnfilled = require("../assets/icons/tab_icons/home_icon_unfilled.png");
+
+export const gamesIconFilled = require("../assets/icons/tab_icons/games_icon_filled.png");
+export const gamesIconUnfilled = require("../assets/icons/tab_icons/games_icon_unfilled.png");
+
+export const kidsIconFilled = require("../assets/icons/tab_icons/kids_icon_filled.png");
+export const kidsIconUnfilled = require("../assets/icons/tab_icons/kids_icon_unfilled.png");
+
 export const profileIconFilled = require("../assets/icons/tab_icons/profile_icon_filled.png");
 export const profileIconUnfilled = require("../assets/icons/tab_icons/profile_icon_unfilled.png");
 
 // Icons
 export const chevronleftIcon = require("../assets/icons/chevronleft_icon.png");
 export const closeIcon = require("../assets/icons/close_icon.png");
-export const homeIcon = require("../assets/icons/home_icon.png");
 export const fingerprintIcon = require("../assets/icons/fingerprint_icon.png");
 export const filterIcon = require("../assets/icons/filter_icon.png");
 export const favouriteIcon = require("../assets/icons/favourite_icon.png");
@@ -31,20 +31,20 @@ export const starIcon = require("../assets/icons/star_icon.png");
 export const searchIcon = require("../assets/icons/search_icon.png");
 
 export default {
-    cardstackIconFilled,
-    cardstackIconUnfilled,
-    matchesIconFilled,
-    matchesIconUnfilled,
-    discoverIconFilled,
-    discoverIconUnfilled,
-    chatIconFilled,
-    chatIconUnfilled,
+    homeIconFilled,
+    homeIconUnfilled,
+    
+    gamesIconFilled,
+    gamesIconUnfilled,
+
+    kidsIconFilled,
+    kidsIconUnfilled,
+
     profileIconFilled,
     profileIconUnfilled,
 
     chevronleftIcon,
     closeIcon,
-    homeIcon,
     fingerprintIcon,
     filterIcon,
     favouriteIcon,

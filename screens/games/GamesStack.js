@@ -18,9 +18,9 @@ const Games = createStackNavigator();
 const GamesStack = () => {
 
     return (
-        <Discover.Navigator screenOptions={{ headerShown: false }}>
-           <Discover.Screen name="Discover" component={DiscoverScreen} />
-        </Discover.Navigator>
+        <Games.Navigator screenOptions={{ headerShown: false }}>
+           <Games.Screen name="Games" component={GamesScreen} />
+        </Games.Navigator>
     )
 }
 

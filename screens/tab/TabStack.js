@@ -4,6 +4,7 @@ import { StyleSheet } from 'react-native';
 
 import HomeStack from '../home/HomeStack';
 import GamesStack from '../games/GamesStack';
+import KidsStack from '../kids/KidsStack';
 import ProfileStack from '../profile/ProfileStack';
 
 import Tab from './components/Tab'
@@ -36,11 +37,15 @@ const TabStack = () => {
     }}
     >
         <BottomTab.Screen name="Home" component={HomeStack} options={{
-            tabBarIcon: ({focused}) => <Tab focused={focused} size={25} unfocused_icon={icons.cardstackIconUnfilled} focused_icon={icons.cardstackIconFilled} />
+            tabBarIcon: ({focused}) => <Tab focused={focused} size={25} unfocused_icon={icons.homeIconUnfilled} focused_icon={icons.homeIconFilled} />
           }}
         />
         <BottomTab.Screen name="Games" component={GamesStack} options={{
-            tabBarIcon: ({focused}) => <Tab focused={focused} size={25} unfocused_icon={icons.discoverIconUnfilled} focused_icon={icons.discoverIconFilled} />
+            tabBarIcon: ({focused}) => <Tab focused={focused} size={25} unfocused_icon={icons.gamesIconUnfilled} focused_icon={icons.gamesIconFilled} />
+          }}
+        />
+        <BottomTab.Screen name="Kids" component={KidsStack} options={{
+            tabBarIcon: ({focused}) => <Tab focused={focused} size={35} unfocused_icon={icons.kidsIconUnfilled} focused_icon={icons.kidsIconFilled} />
           }}
         />
         <BottomTab.Screen name="Profile" component={ProfileStack}
