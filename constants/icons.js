@@ -12,6 +12,8 @@ export const profileIconFilled = require("../assets/icons/tab_icons/profile_icon
 export const profileIconUnfilled = require("../assets/icons/tab_icons/profile_icon_unfilled.png");
 
 // Icons
+export const infoIcon = require("../assets/icons/info_icon.png");
+export const playIcon = require("../assets/icons/play_icon_unfilled_light.png");
 export const chevronleftIcon = require("../assets/icons/chevronleft_icon.png");
 export const closeIcon = require("../assets/icons/close_icon.png");
 export const fingerprintIcon = require("../assets/icons/fingerprint_icon.png");
@@ -43,6 +45,8 @@ export default {
     profileIconFilled,
     profileIconUnfilled,
 
+    infoIcon,    
+    playIcon,    
     chevronleftIcon,
     closeIcon,
     fingerprintIcon,

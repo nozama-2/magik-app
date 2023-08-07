@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
     title: {
         fontFamily: "Poppins-Bold",
         fontSize: 35,
-        fontWeight: 800,
+        fontWeight: 300,
         alignSelf: 'flex-start',
         color: COLORS.black,
         paddingLeft: 20,

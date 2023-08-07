@@ -4,12 +4,8 @@ import { LogBox } from "react-native";
 import * as Font from "expo-font";
 
 import "react-native-gesture-handler";
-
-import { StatusBar } from "expo-status-bar";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-
 import { useLoadedAssets } from "./hooks/useLoadedAssets";
-import Navigation from "./navigation";
 import { NativeBaseProvider } from 'native-base';
 import { useColorScheme } from "react-native";
 import { NavigationContainer } from '@react-navigation/native';
@@ -17,6 +13,8 @@ import RootStack from './screens/RootStack';
 
 import { connect, Provider, useStore } from "react-redux";
 import { store } from "./redux/store";
+
+// LogBox.ignoreAllLogs();
 
 export default function App() {
   const isLoadingComplete = useLoadedAssets();
@@ -37,7 +35,7 @@ export default function App() {
         loadFonts();
     }, [])
 
-  if (!(isLoadingComplete)) {
+  if (!(isLoadingComplete && isLoaded)) {
     return null;
   } else {
     return (

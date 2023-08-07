@@ -4,9 +4,7 @@ import { t } from "react-native-tailwindcss";
 import { icons } from '../../constants';
 import InterestOption from './components/InterestOption';
 import SettingsButton from './components/SettingsButton';
-import PhotoGallery from './PhotoGallery';
 import { COLORS } from '../../constants';
-import { Center } from "native-base";
 
 function ProfileScreen({ navigation }) {
 
