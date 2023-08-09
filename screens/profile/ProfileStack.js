@@ -8,29 +8,24 @@ import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
 const Profile = createStackNavigator();
 
 const ProfileStack = ({ route, navigation }) => {
+  const dispatch = useDispatch();
 
-    const dispatch = useDispatch()
+  useLayoutEffect(() => {
+    const routeName = getFocusedRouteNameFromRoute(route);
+    if (routeName === "Settings") {
+      dispatch({ type: "disableBottomTabs" });
+    } else {
+      dispatch({ type: "enableBottomTabs" });
+    }
+  }, [route, navigation]);
 
-    useLayoutEffect(() => {
-        const routeName = getFocusedRouteNameFromRoute(route);
-        if (routeName === 'Settings') {
-            dispatch({ type: "disableBottomTabs" })
-        } else {
-            dispatch({ type: "enableBottomTabs" })
-        }
-      }, [route, navigation]);
-
-
-    return (
-        <Profile.Navigator screenOptions={{ headerShown: false }}>
-            <Profile.Group>
-                <Profile.Screen name="Profile" component={ProfileScreen} />
-            </Profile.Group>
-            <Profile.Group screenOptions={{presentation: 'modal'}}>
-                <Profile.Screen name="Settings" component={SettingsScreen} />
-            </Profile.Group>
-        </Profile.Navigator>
-    )
-}
+  return (
+    <Profile.Navigator screenOptions={{ headerShown: false }}>
+      <Profile.Group>
+        <Profile.Screen name="Profile" component={ProfileScreen} />
+      </Profile.Group>
+    </Profile.Navigator>
+  );
+};
 
 export default ProfileStack;
