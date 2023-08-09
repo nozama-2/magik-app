@@ -10,28 +10,44 @@ import GamesView from "./components/GamesView";
 
 const games = [
   {
-    name: "Shapes",
+    name: "Matching Shapes",
     themeColor: COLORS.primary,
     imageUrl: "assets/images/games_images/tangram.png",
     info: "Match the Shape in the corresponding box! When there multiple shapes, place each shape into its cutout!",
+    purchased: true,
+    category: "logic",
+    ageRangeStart: 3,
+    ageRangeEnd: 5,
   },
   {
     name: "Tangram",
     themeColor: COLORS.secondary,
     imageUrl: "assets/images/games_images/tangram.png",
     info: "Tangram! Insert each piece one by one into the cutout, until it fits perfectly.",
+    purchased: true,
+    category: "logic",
+    ageRangeStart: 6,
+    ageRangeEnd: 12,
   },
   {
     name: "Numbers",
     themeColor: COLORS.secondary,
     imageUrl: "assets/images/games_images/tangram.png",
     info: "Place the numbers in each blank! Make sure all the equations add up!",
+    purchased: true,
+    category: "math",
+    ageRangeStart: 3,
+    ageRangeEnd: 5,
   },
   {
     name: "Battleship",
     themeColor: COLORS.secondary,
     imageUrl: "assets/images/games_images/tangram.png",
     info: "Place your ships on your side of the screen. Try and sink your opponents ships at the same time!",
+    purchased: false,
+    category: "multi",
+    ageRangeStart: 6,
+    ageRangeEnd: 12,
   },
 ];
 
