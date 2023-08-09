@@ -128,8 +128,44 @@ const HomeScreen = ({ navigation }) => {
                     </View>
 
                     {/* This is going to be the section for badges and awards */}
-                    <ScrollView>
-                            
+                    <Text style={styles.badgesHeader}>
+                        My Badges
+                    </Text>
+
+                    <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+                    {
+                        Array.from(Array(2).keys()).map((e) => (
+                            <>
+                            <Image
+                                source={icons.redBadgeIcon}
+                                resizeMode='contain'
+                                style={{
+                                    alignSelf: 'center',
+                                    width: 90,
+                                    height: 90,
+                                }}
+                                />
+                                <Image
+                                source={icons.blueBadgeIcon}
+                                resizeMode='contain'
+                                style={{
+                                    alignSelf: 'center',
+                                    width: 90,
+                                    height: 90,
+                                }}
+                                />
+                                <Image
+                                source={icons.greenBadgeIcon}
+                                resizeMode='contain'
+                                style={{
+                                    alignSelf: 'center',
+                                    width: 90,
+                                    height: 90,
+                                }}
+                                />
+                            </>
+                        ))
+                    }
                     </ScrollView>
                 </View>
             </View>
@@ -177,6 +213,14 @@ const styles = StyleSheet.create({
 		shadowColor: COLORS.black,
 		shadowOffset: { height: 0, width: 0 },
 	},
+    badgesHeader: {
+        fontFamily: "Poppins-Bold",
+		fontSize: 26,
+        marginVertical: 10,
+        marginBottom: 25,
+		fontWeight: 700,
+        alignSelf: 'center'
+    },  
     verticalContainer: {
         display: 'flex',
         flexDirection: 'column',

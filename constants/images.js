@@ -1,3 +1,5 @@
-export const images = {
-    tangramImageUrl: "../assets/images/games_images/tangram.png",
+export const backgroundFade = require("../assets/images/background-fade/background-fade.png");
+
+export default {
+    backgroundFade
 }
