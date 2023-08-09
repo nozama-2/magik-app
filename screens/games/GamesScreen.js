@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, SafeAreaView, View, Text } from "react-native";
 import { COLORS } from "../../constants/theme";
-import { Center, ScrollView } from "native-base";
+import { Center, ScrollView, Box } from "native-base";
 import { t } from "react-native-tailwindcss";
 
 import SearchBar from "./components/SearchBar";

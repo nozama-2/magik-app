@@ -26,10 +26,10 @@ const TangramScreen = ({ route, navigation }) => {
           ]}
         >
           <BackButton onPress={() => navigation.goBack()} />
-          <Text style={[styles.title, t.mB6, t.mL0]}>Tangram</Text>
+          <Text style={[styles.title, t.mB3, t.mL0]}>Tangram</Text>
           <Spacer />
         </View>
-        <View style={[t.p2, { display: "flex", alignItems: "center" }]}>
+        <View style={[t.p2, t.hFull, { display: "flex", alignItems: "center" }]}>
           <RatingTitle rating="1560" />
 
           <NewGameButton />

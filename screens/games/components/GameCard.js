@@ -9,6 +9,8 @@ import {
 } from "react-native";
 import { COLORS, icons, images } from "../../../constants";
 import { t } from "react-native-tailwindcss";
+import { Box } from 'native-base';
+
 
 const GameCard = ({ name, imageUrl, info, themeColor, route, navigation }) => {
   return (
@@ -16,13 +18,14 @@ const GameCard = ({ name, imageUrl, info, themeColor, route, navigation }) => {
       style={styles.container}
       onPress={() => navigation.push(name)}
     >
+
       {/* Action Button: Information buton to teach the player how to play the game */}
       <View style={[t.flex1, t.flexRow, t.selfEnd, t.mT1, t.mR2]}>
         <TouchableOpacity
           onPress={() =>
             navigation.push("InfoModal", { name: name, info: info })
           }
-        >
+          >
           <Image
             source={icons.infoIcon}
             resizeMode="contain"
@@ -33,7 +36,7 @@ const GameCard = ({ name, imageUrl, info, themeColor, route, navigation }) => {
               height: 25,
               tintColor: COLORS.gray,
             }}
-          />
+            />
         </TouchableOpacity>
       </View>
 
@@ -51,20 +54,29 @@ const GameCard = ({ name, imageUrl, info, themeColor, route, navigation }) => {
           // shadowColor: COLORS.black,
           // shadowOffset: { height: 10, width: 0 }
         }}
-      />
+        />
 
       {/* The Name of the game */}
       <Text style={styles.containerHeader}>{name}</Text>
 
       {/* PLAY BUTTON */}
-      <View
-        style={[
-          styles.playButton,
-          t.flex,
-          t.justifyCenter,
-          { backgroundColor: themeColor },
-        ]}
-      >
+        <Box
+                bg={{
+                  linearGradient: {
+                    colors: ["red.500", "violet.500"],
+                    start: [1, 0],
+                    end: [0, 1]
+                  }
+                }}
+                _text={{
+                  fontSize: "md",
+                  fontWeight: "medium",
+                  color: "warmGray.50",
+                    textAlign: "center"
+                  }}
+                  style={[t.flex, t.flexRow, t.mT4, t.justifyCenter, styles.playButton, styles.shadow]}
+                  >
+
         <Image
           source={icons.playIcon}
           resizeMode="contain"
@@ -74,8 +86,8 @@ const GameCard = ({ name, imageUrl, info, themeColor, route, navigation }) => {
             height: 20,
             tintColor: COLORS.white,
           }}
-        />
-      </View>
+          />
+        </Box>
     </TouchableOpacity>
   );
 };

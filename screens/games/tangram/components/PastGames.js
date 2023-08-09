@@ -2,6 +2,7 @@ import React from "react";
 import { Box, Text, ScrollView, Center } from "native-base";
 import ButtonGame from "./ButtonGame";
 import { COLORS } from "../../../../constants";
+import { t } from 'react-native-tailwindcss';
 
 const PastPuzzles = ({}) => {
   return (
@@ -15,9 +16,9 @@ const PastPuzzles = ({}) => {
       >
         Past Games
       </Text>
-      <ScrollView showsVerticalScrollIndicator={false}>
+      <ScrollView showsVerticalScrollIndicator={false} style={[t.hFull]}>
         <Center w="100%">
-          {Array.from(Array(10).keys()).map((e) => {
+          {Array.from(Array(7).keys()).map((e) => {
             return (
               <ButtonGame
                 text={`Game ${e + 1}`}
