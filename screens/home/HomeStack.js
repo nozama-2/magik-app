@@ -4,8 +4,9 @@ import { createStackNavigator } from '@react-navigation/stack';
 import {getFocusedRouteNameFromRoute} from '@react-navigation/native';
 
 import HomeScreen from './HomeScreen';
-import FiltersScreen from './FiltersScreen';
+import GameStatsScreen from './GameStatsScreen';
 import { useDispatch } from "react-redux";
+
 
 const Home = createStackNavigator();
 
@@ -15,7 +16,7 @@ const HomeStack = ({ route, navigation }) => {
 
     useLayoutEffect(() => {
         const routeName = getFocusedRouteNameFromRoute(route);
-        if (routeName === 'Filters') {
+        if (routeName === 'Game Stats') {
           dispatch({ type: "disableBottomTabs" })
         } else {
             dispatch({ type: "enableBottomTabs" })
@@ -24,9 +25,14 @@ const HomeStack = ({ route, navigation }) => {
 
     return (
         <Home.Navigator screenOptions={{ headerShown: false }}>
+
+            {/* These are for the standard screens */}
             <Home.Group>
                 <Home.Screen name="Home" component={HomeScreen} />
             </Home.Group>
+
+
+            {/* These are for the modals within the Home Screen */}
            <Home.Group screenOptions={{
                 presentation: 'modal',
                 gestureResponseDistance: 1000, // default is 135
@@ -35,7 +41,7 @@ const HomeStack = ({ route, navigation }) => {
                     opacity:0.99
                 }}
            }>
-                <Home.Screen name="Filters" component={FiltersScreen} />
+                <Home.Screen name="Game Stats" component={GameStatsScreen} />
             </Home.Group>
         </Home.Navigator>
     )

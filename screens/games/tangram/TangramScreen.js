@@ -12,36 +12,46 @@ import PastPuzzles from "./components/PastGames";
 
 const TangramScreen = ({ route, navigation }) => {
   return (
-    <SafeAreaView>
+    // <SafeAreaView>
       <View style={[t.flex, t.flexCol]}>
-        <View
-          style={[
-            t.flex,
-            t.flexRow,
-            t.justifyBetween,
-            t.mT8,
-            t.mL6,
-            t.z10,
-            { alignItems: "center" },
-          ]}
-        >
-          <BackButton onPress={() => navigation.goBack()} />
-          <Text style={[styles.title, t.mB3, t.mL0]}>Tangram</Text>
-          <Spacer />
-        </View>
-        <View style={[t.p2, t.hFull, { display: "flex", alignItems: "center" }]}>
-          <RatingTitle rating="1560" />
+        <View style={styles.roundedTop}>
 
-          <NewGameButton />
+            <View
+              style={[
+                t.flex,
+                t.flexRow,
+                t.justifyBetween,
+                t.mT20,
+                t.mL6,
+                t.z10,
+                { alignItems: "center" },
+              ]}
+              >
+              <BackButton onPress={() => navigation.goBack()} />
+              <Text style={[styles.title, t.mL0]}>Tangram</Text>
+              <Spacer />
+            </View>
+            <View style={[t.p2, { display: "flex", alignItems: "center" }]}>
+              
+              <RatingTitle rating="1560" />
+              <NewGameButton />
+            </View>
+
+        </View>
 
           <PastPuzzles />
-        </View>
       </View>
-    </SafeAreaView>
+    // </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
+  roundedTop: {
+    borderBottomLeftRadius: 25,
+    borderBottomRightRadius: 25,
+    // backgroundColor: COLORS.lightGray,
+    paddingBottom: 10,
+  },  
   title: {
     fontFamily: "Poppins-Bold",
     fontSize: 35,

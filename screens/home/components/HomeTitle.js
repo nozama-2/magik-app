@@ -6,7 +6,7 @@ const HomeTitle = () => {
     return (
         <View style={[t.flex, t.flexCol]}>
             <Text style={[t.textGray800, styles.title]}>Magik</Text>
-            <Text style={[t.textGray800, styles.text]}>Revolutionalising Play</Text>
+            {/* <Text style={[t.textGray800, styles.text]}>Revolutionalising Play</Text> */}
         </View>
     )
 }
@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
     title: {
         fontFamily: "Poppins-Bold",
         fontWeight: 700,
-        fontSize: 20,
+        fontSize: 26,
         alignSelf: 'center',
     },
     text: {

@@ -35,11 +35,11 @@ const styles = StyleSheet.create({
     color: "#888899",
   },
   text1: {
-    fontFamily: "Poppins-SemiBold",
+    fontFamily: "Poppins-Regular",
     fontWeight: 700,
   },
   text2: {
-    fontFamily: "Poppins-SemiBold",
+    fontFamily: "Poppins-Regular",
     fontWeight: 300,
   },
   container: {

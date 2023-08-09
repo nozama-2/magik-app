@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     color: "#888899",
   },
   text: {
-    fontFamily: "Poppins-SemiBold",
+    fontFamily: "Poppins-Regular",
   },
   container: {
     height: 54,

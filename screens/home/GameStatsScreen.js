@@ -6,13 +6,16 @@ import { COLORS } from '../../constants';
 import BackButton from './components/BackButton';
 import Spacer from './components/Spacer';
 
-function FiltersScreen({ navigation }) {
+function GameStatsScreen({ route, navigation }) {
+
+    const { name } = route.params;
+
     return (
         <SafeAreaView style={{flex: 1, flexDirection: 'column', justifyContent: 'flex-end'}}>
             <View style={styles.modalContainer}>
                 <View style={[t.flex, t.flexRow, t.justifyBetween,t.mT8, t.mL6, t.z10, {alignItems: 'center'}]}>
                     <BackButton onPress={() => navigation.goBack()} />
-                    <Text style={[t.textGray800, styles.header]}>Filters</Text>
+                    <Text style={[t.textGray800, styles.header]}>{ name }</Text>
                     <Spacer />
                 </View>
                 <ScrollView showsVerticalScrollIndicator={false}>
@@ -36,7 +39,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
     },
     subHeader: {
-        fontFamily: "Poppins-SemiBold",
+        fontFamily: "Poppins-Regular",
         marginBottom: 10,
         marginTop: 17,
         color: '#888899',
@@ -61,4 +64,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default FiltersScreen;
+export default GameStatsScreen;
