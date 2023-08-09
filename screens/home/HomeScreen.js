@@ -95,23 +95,45 @@ const HomeScreen = ({ navigation }) => {
 
             {/* Favourite Game */}
             <TouchableOpacity style={[styles.subContainer]}>
-              <Image
-                source={require("../../assets/images/games_images/tangram.png")}
-                resizeMode="contain"
+              <View
                 style={{
-                  marginTop: 0,
-                  alignSelf: "center",
-                  width: 50,
-                  height: 50,
-                  // shadowOpacity: 0.3,
-                  // shadowRadius: 20,
-                  // shadowColor: COLORS.black,
-                  // shadowOffset: { height: 10, width: 0 }
+                  height: "80%",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignContent: "center",
                 }}
-              />
+              >
+                <View style={styles.favGame}>
+                  <Text style={styles.favGameText}>Favourite Game</Text>
+                </View>
 
-              {/* The Name of the game */}
-              <Text style={styles.containerHeader}>Tangram</Text>
+                <View
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    height: "75%",
+                  }}
+                >
+                  <Image
+                    source={require("../../assets/images/games_images/tangram.png")}
+                    resizeMode="contain"
+                    style={{
+                      marginTop: 0,
+                      alignSelf: "center",
+                      width: 50,
+                      height: 50,
+                      // shadowOpacity: 0.3,
+                      // shadowRadius: 20,
+                      // shadowColor: COLORS.black,
+                      // shadowOffset: { height: 10, width: 0 }
+                    }}
+                  />
+
+                  {/* The Name of the game */}
+                  <Text style={styles.containerHeader}>Tangram</Text>
+                </View>
+              </View>
 
               {/* PLAY BUTTON */}
               <View
@@ -138,46 +160,42 @@ const HomeScreen = ({ navigation }) => {
         </View>
 
         {/* This is going to be the section for badges and awards */}
-         {/* This is going to be the section for badges and awards */}
-         <Text style={styles.badgesHeader}>
-                        My Badges
-                    </Text>
+        {/* This is going to be the section for badges and awards */}
+        <Text style={styles.badgesHeader}>My Badges</Text>
 
-                    <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-                    {
-                        Array.from(Array(2).keys()).map((e) => (
-                            <>
-                            <Image
-                                source={icons.redBadgeIcon}
-                                resizeMode='contain'
-                                style={{
-                                    alignSelf: 'center',
-                                    width: 90,
-                                    height: 90,
-                                }}
-                                />
-                                <Image
-                                source={icons.blueBadgeIcon}
-                                resizeMode='contain'
-                                style={{
-                                    alignSelf: 'center',
-                                    width: 90,
-                                    height: 90,
-                                }}
-                                />
-                                <Image
-                                source={icons.greenBadgeIcon}
-                                resizeMode='contain'
-                                style={{
-                                    alignSelf: 'center',
-                                    width: 90,
-                                    height: 90,
-                                }}
-                                />
-                            </>
-                        ))
-                    }
-                    </ScrollView>
+        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+          {Array.from(Array(2).keys()).map((e) => (
+            <>
+              <Image
+                source={icons.redBadgeIcon}
+                resizeMode="contain"
+                style={{
+                  alignSelf: "center",
+                  width: 90,
+                  height: 90,
+                }}
+              />
+              <Image
+                source={icons.blueBadgeIcon}
+                resizeMode="contain"
+                style={{
+                  alignSelf: "center",
+                  width: 90,
+                  height: 90,
+                }}
+              />
+              <Image
+                source={icons.greenBadgeIcon}
+                resizeMode="contain"
+                style={{
+                  alignSelf: "center",
+                  width: 90,
+                  height: 90,
+                }}
+              />
+            </>
+          ))}
+        </ScrollView>
       </View>
     </View>
   );
@@ -215,16 +233,17 @@ const styles = StyleSheet.create({
   },
   badgesHeader: {
     fontFamily: "Poppins-Bold",
-  fontSize: 26,
+    fontSize: 26,
     marginVertical: 10,
     marginBottom: 25,
-  fontWeight: 700,
-    alignSelf: 'center'
-  },  
+    fontWeight: 700,
+    alignSelf: "center",
+  },
   subContainer: {
     backgroundColor: COLORS.white,
     borderRadius: 8,
     width: Dimensions.get("window").width / 2 - 50,
+    height: 250,
     margin: 10,
     marginTop: 30,
     shadowOpacity: 0.25,
@@ -273,10 +292,30 @@ const styles = StyleSheet.create({
     alignSelf: "center",
   },
   playButton: {
-    height: 40,
+    height: "20%",
     borderBottomLeftRadius: 8,
     borderBottomRightRadius: 8,
     width: "100%",
+  },
+  favGame: {
+    backgroundColor: COLORS.secondary,
+
+    alignSelf: "center",
+    justifyContent: "center",
+    height: "25%",
+    borderTopLeftRadius: 8,
+    borderTopRightRadius: 8,
+    width: "100%",
+    position: "static",
+    top: 0,
+  },
+  favGameText: {
+    fontFamily: "Poppins-Bold",
+    fontSize: 16,
+    fontWeight: 700,
+    color: COLORS.white,
+    alignSelf: "center",
+    justifyContent: "center",
   },
 });
 
