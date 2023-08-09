@@ -11,6 +11,11 @@ export const kidsIconUnfilled = require("../assets/icons/tab_icons/kids_icon_unf
 export const profileIconFilled = require("../assets/icons/tab_icons/profile_icon_filled.png");
 export const profileIconUnfilled = require("../assets/icons/tab_icons/profile_icon_unfilled.png");
 
+// Home Icons
+export const streaksIcon = require("../assets/icons/home_icons/streaks_icon.png");
+
+
+
 // Icons
 export const infoIcon = require("../assets/icons/info_icon.png");
 export const playIcon = require("../assets/icons/play_icon_unfilled_light.png");
@@ -35,15 +40,14 @@ export const searchIcon = require("../assets/icons/search_icon.png");
 export default {
     homeIconFilled,
     homeIconUnfilled,
-    
     gamesIconFilled,
     gamesIconUnfilled,
-
     kidsIconFilled,
     kidsIconUnfilled,
-
     profileIconFilled,
     profileIconUnfilled,
+
+    streaksIcon,
 
     infoIcon,    
     playIcon,    
