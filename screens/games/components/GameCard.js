@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  Text,
   View,
   Image,
   Dimensions,
@@ -9,13 +8,28 @@ import {
 } from "react-native";
 import { COLORS, icons, images } from "../../../constants";
 import { t } from "react-native-tailwindcss";
-import { Box } from 'native-base';
+import { Box, Text } from "native-base";
 
+const colorCatMap = {
+  logic: COLORS.secondary,
+  math: COLORS.peach,
+  multi: COLORS.yellow,
+};
 
-const GameCard = ({ name, imageUrl, info, themeColor, route, navigation }) => {
+const GameCard = ({
+  name,
+  ageRangeStart,
+  ageRangeEnd,
+  category,
+  imageUrl,
+  info,
+  themeColor,
+  route,
+  navigation,
+}) => {
   const e = {
     tangram: icons.tangramIcon,
-    shapes: icons.shapesIcon,
+    "matching shapes": icons.shapesIcon,
     numbers: icons.numbersIcon,
     battleship: icons.battleshipIcon,
   };
@@ -25,14 +39,37 @@ const GameCard = ({ name, imageUrl, info, themeColor, route, navigation }) => {
       style={styles.container}
       onPress={() => navigation.push(name)}
     >
-
       {/* Action Button: Information buton to teach the player how to play the game */}
-      <View style={[t.flex1, t.flexRow, t.selfEnd, t.mT1, t.mR2]}>
+      <Box
+        display="flex"
+        flexDir="row"
+        w="100%"
+        px={1}
+        py={1}
+        pb={2}
+        justifyContent="space-between"
+        alignItems="center"
+      >
+        {/* Age range */}
+        <Box
+          borderRadius={6}
+          borderWidth={1}
+          borderColor={COLORS.darkgray}
+          backgroundColor={COLORS.lightGray2}
+          opacity={0.7}
+          px={2}
+          py={0.5}
+        >
+          <Text fontSize="12px">
+            {ageRangeStart}-{ageRangeEnd} years
+          </Text>
+        </Box>
+
         <TouchableOpacity
           onPress={() =>
             navigation.push("InfoModal", { name: name, info: info })
           }
-          >
+        >
           <Image
             source={icons.infoIcon}
             resizeMode="contain"
@@ -43,9 +80,9 @@ const GameCard = ({ name, imageUrl, info, themeColor, route, navigation }) => {
               height: 25,
               tintColor: COLORS.gray,
             }}
-            />
+          />
         </TouchableOpacity>
-      </View>
+      </Box>
 
       {/* The Main Game Image Thumbnail */}
       <Image
@@ -61,29 +98,55 @@ const GameCard = ({ name, imageUrl, info, themeColor, route, navigation }) => {
           // shadowColor: COLORS.black,
           // shadowOffset: { height: 10, width: 0 }
         }}
-        />
+      />
 
       {/* The Name of the game */}
-      <Text style={styles.containerHeader}>{name}</Text>
+      <Box
+        height="80px"
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        w="100%"
+      >
+        <Text style={styles.containerHeader}>{name}</Text>
+      </Box>
+
+      {/* Category */}
+      <Box
+        borderRadius={10}
+        backgroundColor={colorCatMap[category]}
+        px={2}
+        py={0.5}
+      >
+        <Text fontSize="12px" color={COLORS.white}>
+          {category}
+        </Text>
+      </Box>
 
       {/* PLAY BUTTON */}
-        <Box
-                bg={{
-                  linearGradient: {
-                    colors: ["red.500", "violet.500"],
-                    start: [1, 0],
-                    end: [0, 1]
-                  }
-                }}
-                _text={{
-                  fontSize: "md",
-                  fontWeight: "medium",
-                  color: "warmGray.50",
-                    textAlign: "center"
-                  }}
-                  style={[t.flex, t.flexRow, t.mT4, t.justifyCenter, styles.playButton, styles.shadow]}
-                  >
-
+      <Box
+        bg={{
+          linearGradient: {
+            colors: ["red.500", "violet.500"],
+            start: [1, 0],
+            end: [0, 1],
+          },
+        }}
+        _text={{
+          fontSize: "md",
+          fontWeight: "medium",
+          color: "warmGray.50",
+          textAlign: "center",
+        }}
+        style={[
+          t.flex,
+          t.flexRow,
+          t.mT4,
+          t.justifyCenter,
+          styles.playButton,
+          styles.shadow,
+        ]}
+      >
         <Image
           source={icons.playIcon}
           resizeMode="contain"
@@ -93,8 +156,8 @@ const GameCard = ({ name, imageUrl, info, themeColor, route, navigation }) => {
             height: 20,
             tintColor: COLORS.white,
           }}
-          />
-        </Box>
+        />
+      </Box>
     </TouchableOpacity>
   );
 };
@@ -116,8 +179,9 @@ const styles = StyleSheet.create({
     color: COLORS.black,
     marginVertical: 10,
     fontFamily: "Poppins-Bold",
-    fontSize: 16,
+    fontSize: 20,
     fontWeight: 700,
+    textAlign: "center",
   },
   playButton: {
     height: 40,
