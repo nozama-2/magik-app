@@ -10,7 +10,7 @@ import GamesView from "./components/GamesView";
 
 const games = [
   {
-    name: "Matching Shape",
+    name: "Shapes",
     themeColor: COLORS.primary,
     imageUrl: "assets/images/games_images/tangram.png",
     info: "Match the Shape in the corresponding box! When there multiple shapes, place each shape into its cutout!",
