@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  View,
   StyleSheet,
   Dimensions,
   TouchableOpacity,
@@ -8,6 +7,7 @@ import {
   Text,
   ScrollView,
 } from "react-native";
+import { View } from "native-base";
 
 import HomeTitle from "./components/HomeTitle";
 import Spacer from "./components/Spacer";
@@ -16,8 +16,16 @@ import FilterButton from "./components/FilterButton";
 import { t } from "react-native-tailwindcss";
 import { COLORS, icons } from "../../constants";
 import { Select } from "native-base";
+import Chart from "./components/Chart/Index";
 
 const HomeScreen = ({ navigation }) => {
+  const screenTime = [
+    { number: 8, name: "Tangram", color: COLORS.blue },
+    { number: 7, name: "Numbers", color: COLORS.purple },
+    { number: 10, name: "Matching", color: COLORS.primary },
+    { number: 23, name: "Battleship", color: COLORS.secondary },
+    { number: 37, name: "Unused", color: COLORS.lightGray },
+  ];
   const [child, setChild] = React.useState("");
 
   return (
@@ -78,6 +86,7 @@ const HomeScreen = ({ navigation }) => {
             {/* Screentime */}
             <TouchableOpacity style={[styles.subContainer]}>
               {/* The Streak text */}
+              <Chart data={screenTime} />
               <View style={[t.justifyCenter, t.m2]}>
                 <Text style={[styles.streakNumber]}>15</Text>
                 <Text style={[styles.streakSubtext]}>minutes used</Text>

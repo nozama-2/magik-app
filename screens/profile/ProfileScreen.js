@@ -95,6 +95,7 @@ const styles = StyleSheet.create({
     marginTop: 17,
     color: "#888899",
     marginLeft: 3,
+    fontWeight: 600,
   },
   container: {
     width: "80%",
