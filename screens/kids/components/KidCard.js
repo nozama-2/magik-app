@@ -16,12 +16,12 @@ let KidCard = ({ id, isNormalCard, isPaddingCard, navigation }) => {
 
   return !isPaddingCard ? (
     <Box
-      backgroundColor={COLORS.white}
+      backgroundColor={!isNormalCard ? "transparent" : COLORS.white}
       width={170}
       height={290}
       borderRadius="xl"
       margin="1"
-      shadow="2"
+      shadow={!isNormalCard ? "2" : 0}
       padding={3}
       pb={5}
     >
@@ -72,18 +72,15 @@ let KidCard = ({ id, isNormalCard, isPaddingCard, navigation }) => {
           }}
         >
           <Flex height="100%" justifyContent="center" alignItems="center">
-            <Text color={COLORS.primary} bold fontSize="md" mb={2}>
-              Add Child
-            </Text>
             <Flex
-              width={100}
-              height={100}
+              width={70}
+              height={70}
               borderRadius={50}
               justifyContent="center"
               alignItems="center"
               backgroundColor={COLORS.primary}
             >
-              <Icon name="plus" color={COLORS.white} size={40} />
+              <Icon name="plus" color={COLORS.white} size={25} />
             </Flex>
           </Flex>
         </Pressable>
