@@ -16,6 +16,15 @@ import { store } from "./redux/store";
 
 // LogBox.ignoreAllLogs();
 
+const LinearGradient = require("expo-linear-gradient").LinearGradient;
+
+const config = {
+    dependencies: {
+      "linear-gradient": LinearGradient
+    }
+};
+
+
 export default function App() {
   const isLoadingComplete = useLoadedAssets();
   const colorScheme = useColorScheme();
@@ -43,7 +52,7 @@ export default function App() {
       //   <Navigation colorScheme={colorScheme} />
       // </SafeAreaProvider>
 
-        <NativeBaseProvider>
+        <NativeBaseProvider config={config}>
             <NavigationContainer>
                 <Provider store={store}>
                     <RootStack />

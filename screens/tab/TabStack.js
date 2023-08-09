@@ -7,6 +7,7 @@ import GamesStack from '../games/GamesStack';
 import KidsStack from '../kids/KidsStack';
 import ProfileStack from '../profile/ProfileStack';
 
+
 import Tab from './components/Tab'
 import { icons } from '../../constants';
 import { shallowEqual, connect, useSelector } from 'react-redux';

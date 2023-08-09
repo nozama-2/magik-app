@@ -7,7 +7,7 @@ import {
   Text,
   ScrollView,
 } from "react-native";
-import { View } from "native-base";
+import { View, Box } from "native-base";
 
 import HomeTitle from "./components/HomeTitle";
 import Spacer from "./components/Spacer";
@@ -18,7 +18,11 @@ import { COLORS, icons } from "../../constants";
 import { Select } from "native-base";
 import Chart from "./components/Chart/Index";
 
+import HomeTopNavigator from "./navigation/HomeTopNavigator";
+
 const HomeScreen = ({ navigation }) => {
+
+
   const screenTime = [
     { number: 8, name: "Tangram", color: COLORS.blue },
     { number: 7, name: "Numbers", color: COLORS.purple },
@@ -26,6 +30,8 @@ const HomeScreen = ({ navigation }) => {
     { number: 23, name: "Battleship", color: COLORS.secondary },
     { number: 37, name: "Unused", color: COLORS.lightGray },
   ];
+
+
   const [child, setChild] = React.useState("");
 
   return (
@@ -56,180 +62,105 @@ const HomeScreen = ({ navigation }) => {
           </Select>
         </View>
 
-        {/* This is going to be the main 3 sections including streaks */}
-        <View style={[styles.verticalContainer]}>
-          {/* First Row: Streaks */}
-
-          <TouchableOpacity style={[styles.container]}>
+        {/* This is going to be the main 2 sub sections */}
+        <View style={[styles.horizontalContainer]}>
+          {/* Left: Streaks */}
+          <TouchableOpacity style={[styles.streaksContainer, styles.shadow]}>
             {/* The Streak text */}
-            <View style={[t.justifyCenter, t.m2]}>
-              <Text style={[styles.streakNumber]}>11</Text>
-              <Text style={[styles.streakSubtext]}>day streak!</Text>
-            </View>
+            <Box
+                bg={{
+                  linearGradient: {
+                    colors: ["lightBlue.500", "violet.500"],
+                    start: [1, 0],
+                    end: [0, 1]
+                  }
+                }}
+                _text={{
+                  fontSize: "md",
+                  fontWeight: "medium",
+                  color: "warmGray.50",
+                    textAlign: "center"
+                  }}
+                  style={[t.flex, t.flexRow, styles.circleRounded, t.mT4, styles.shadow]}
+                >
 
-            {/* The Streaks Icon Thumbnail */}
-            <Image
-              source={icons.streaksIcon}
-              resizeMode="contain"
-              style={{
-                margin: 5,
-                alignSelf: "center",
-                width: 50,
-                height: 50,
-              }}
-            />
+              <View style={[t.flex, t.flexCol, styles.circleRounded, styles.streaksPadding]}>
+                <View style={[t.flex,t.flexRow]}>
+                  <Text style={[styles.streakNumber]}>11</Text>
+                    {/* The Streaks Icon Thumbnail */}
+                    <Image
+                      source={icons.streaksIcon}
+                      resizeMode="contain"
+                      style={{
+                        margin: 5,
+                        alignSelf: "center",
+                        width: 50,
+                        height: 50,
+                      }}
+                      />
+                </View>
+                <Text style={[styles.streakSubtext]}>day streak!</Text>
+              </View>
+
+            </Box>
           </TouchableOpacity>
 
-          {/* Second Row: Screentime and  Favourite Game */}
+          {/* Second Row: Screentime */}
 
-          <View style={[styles.container2]}>
-            {/* Screentime */}
-            <TouchableOpacity style={[styles.subContainer]}>
-              {/* The Streak text */}
-              <Chart data={screenTime} />
-              <View style={[t.justifyCenter, t.m2]}>
-                <Text style={[styles.streakNumber]}>15</Text>
-                <Text style={[styles.streakSubtext]}>minutes used</Text>
-              </View>
-            </TouchableOpacity>
-
-            {/* Favourite Game */}
-            <TouchableOpacity style={[styles.subContainer]}>
-              <View
-                style={{
-                  height: "80%",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignContent: "center",
+          {/* Screentime */}
+          <TouchableOpacity style={[styles.screentimeContainer, styles.shadow]}>
+            {/* The Streak text */}
+            <Box
+                bg={{
+                  linearGradient: {
+                    colors: ["red.400", "violet.400"],
+                    start: [1, 0],
+                    end: [0, 1]
+                  }
                 }}
-              >
-                <View style={styles.favGame}>
-                  <Text style={styles.favGameText}>Favourite Game</Text>
-                </View>
-
-                <View
-                  style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    height: "75%",
+                _text={{
+                  fontSize: "md",
+                  fontWeight: "medium",
+                  color: "warmGray.50",
+                    textAlign: "center"
                   }}
+                  style={[t.flex, t.flexRow, styles.circleRounded, t.mT4, styles.shadow]}
                 >
-                  <Image
-                    source={require("../../assets/images/games_images/tangram.png")}
-                    resizeMode="contain"
-                    style={{
-                      marginTop: 0,
-                      alignSelf: "center",
-                      width: 50,
-                      height: 50,
-                      // shadowOpacity: 0.3,
-                      // shadowRadius: 20,
-                      // shadowColor: COLORS.black,
-                      // shadowOffset: { height: 10, width: 0 }
-                    }}
-                  />
-
-                  {/* The Name of the game */}
-                  <Text style={styles.containerHeader}>Tangram</Text>
-                </View>
-              </View>
-
-              {/* PLAY BUTTON */}
-              <View
-                style={[
-                  styles.playButton,
-                  t.flex,
-                  t.justifyCenter,
-                  { backgroundColor: "orange" },
-                ]}
-              >
-                <Image
-                  source={icons.playIcon}
-                  resizeMode="contain"
-                  style={{
-                    alignSelf: "center",
-                    width: 20,
-                    height: 20,
-                    tintColor: COLORS.white,
-                  }}
-                />
-              </View>
-            </TouchableOpacity>
-          </View>
+                <Chart data={screenTime} />
+                </Box>
+          </TouchableOpacity>
         </View>
 
-        {/* This is going to be the section for badges and awards */}
-        {/* This is going to be the section for badges and awards */}
-        <Text style={styles.badgesHeader}>My Badges</Text>
-
-        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-          {Array.from(Array(2).keys()).map((e) => (
-            <>
-              <Image
-                source={icons.redBadgeIcon}
-                resizeMode="contain"
-                style={{
-                  alignSelf: "center",
-                  width: 90,
-                  height: 90,
-                }}
-              />
-              <Image
-                source={icons.blueBadgeIcon}
-                resizeMode="contain"
-                style={{
-                  alignSelf: "center",
-                  width: 90,
-                  height: 90,
-                }}
-              />
-              <Image
-                source={icons.greenBadgeIcon}
-                resizeMode="contain"
-                style={{
-                  alignSelf: "center",
-                  width: 90,
-                  height: 90,
-                }}
-              />
-            </>
-          ))}
-        </ScrollView>
+            {/* Top Tabs Navigator */}
+            <HomeTopNavigator navigation={navigation} />
       </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  // CONTAINER - HOME
-  container: {
-    backgroundColor: COLORS.white,
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-around",
-    alignItems: "center",
-    borderRadius: 8,
-    width: Dimensions.get("window").width - 50,
-    marginHorizontal: 10,
-    marginTop: 30,
-    shadowOpacity: 0.25,
+  shadow: {
+    shadowOpacity: 0.15,
     shadowRadius: 10,
     shadowColor: COLORS.black,
-    shadowOffset: { height: 0, width: 0 },
+    shadowOffset: { height: 1, width: 0 },
   },
-  container2: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    borderRadius: 8,
-    width: Dimensions.get("window").width - 50,
+  streaksContainer: {
+    borderRadius: 1000,
     marginHorizontal: 10,
-    marginTop: 10,
-    shadowOpacity: 0.25,
-    shadowRadius: 10,
-    shadowColor: COLORS.black,
-    shadowOffset: { height: 0, width: 0 },
+    alignSelf: 'center',
+    justifyContent: 'center',
+  },
+  screentimeContainer: {
+    borderRadius: 1000,
+    margin: 10,
+  },
+  circleRounded: {
+    borderRadius: 1000,
+  },
+  streaksPadding: {
+    paddingHorizontal: 25,
+    paddingVertical: 35,
   },
   badgesHeader: {
     fontFamily: "Poppins-Bold",
@@ -239,21 +170,11 @@ const styles = StyleSheet.create({
     fontWeight: 700,
     alignSelf: "center",
   },
-  subContainer: {
-    backgroundColor: COLORS.white,
-    borderRadius: 8,
-    width: Dimensions.get("window").width / 2 - 50,
-    height: 250,
-    margin: 10,
-    marginTop: 30,
-    shadowOpacity: 0.25,
-    shadowRadius: 10,
-    shadowColor: COLORS.black,
-    shadowOffset: { height: 0, width: 0 },
-  },
-  verticalContainer: {
+  horizontalContainer: {
     display: "flex",
-    flexDirection: "column",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignSelf: 'center'
   },
   containerHome: {
     marginHorizontal: 10,
@@ -271,13 +192,14 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   streakNumber: {
-    color: COLORS.black,
+    color: COLORS.white,
     fontFamily: "Poppins-Bold",
     fontSize: 40,
     fontWeight: 700,
     alignSelf: "center",
   },
   streakSubtext: {
+    color: COLORS.white,
     alignSelf: "center",
     fontWeight: 500,
     fontSize: 15,
