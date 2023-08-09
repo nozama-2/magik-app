@@ -13,6 +13,13 @@ import { Box } from 'native-base';
 
 
 const GameCard = ({ name, imageUrl, info, themeColor, route, navigation }) => {
+  const e = {
+    tangram: icons.tangramIcon,
+    shapes: icons.shapesIcon,
+    numbers: icons.numbersIcon,
+    battleship: icons.battleshipIcon,
+  };
+
   return (
     <TouchableOpacity
       style={styles.container}
@@ -42,7 +49,7 @@ const GameCard = ({ name, imageUrl, info, themeColor, route, navigation }) => {
 
       {/* The Main Game Image Thumbnail */}
       <Image
-        source={require("../../../assets/images/games_images/tangram.png")}
+        source={e[name.toLowerCase()]}
         resizeMode="contain"
         style={{
           marginTop: 0,

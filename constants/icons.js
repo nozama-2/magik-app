@@ -18,7 +18,6 @@ export const redBadgeIcon = require("../assets/icons/badges_icons/badge-1.png");
 export const blueBadgeIcon = require("../assets/icons/badges_icons/badge-2.png");
 export const greenBadgeIcon = require("../assets/icons/badges_icons/badge-3.png");
 
-
 // Icons
 export const infoIcon = require("../assets/icons/info_icon.png");
 export const playIcon = require("../assets/icons/play_icon_unfilled_light.png");
@@ -40,38 +39,49 @@ export const settingsIcon = require("../assets/icons/settings_icon.png");
 export const starIcon = require("../assets/icons/star_icon.png");
 export const searchIcon = require("../assets/icons/search_icon.png");
 
+// Game images
+export const shapesIcon = require("../assets/images/games_images/shapeMatching.png");
+export const tangramIcon = require("../assets/images/games_images/tangram.png");
+export const numbersIcon = require("../assets/images/games_images/numbers.png");
+export const battleshipIcon = require("../assets/images/games_images/battleship.png");
+
 export default {
-    homeIconFilled,
-    homeIconUnfilled,
-    gamesIconFilled,
-    gamesIconUnfilled,
-    kidsIconFilled,
-    kidsIconUnfilled,
-    profileIconFilled,
-    profileIconUnfilled,
+  homeIconFilled,
+  homeIconUnfilled,
+  gamesIconFilled,
+  gamesIconUnfilled,
+  kidsIconFilled,
+  kidsIconUnfilled,
+  profileIconFilled,
+  profileIconUnfilled,
 
-    streaksIcon,
-    redBadgeIcon,
-    blueBadgeIcon,
-    greenBadgeIcon,
+  streaksIcon,
+  redBadgeIcon,
+  blueBadgeIcon,
+  greenBadgeIcon,
 
-    infoIcon,    
-    playIcon,    
-    chevronleftIcon,
-    closeIcon,
-    fingerprintIcon,
-    filterIcon,
-    favouriteIcon,
-    profileIcon,
-    editIcon,
-    calendarIcon,
-    chatIcon,
-    optionsIcon,
-    onlineIcon,
-    typeIcon,
-    tickIcon,
-    deleteIcon,
-    settingsIcon,
-    starIcon,
-    searchIcon
-}
+  infoIcon,
+  playIcon,
+  chevronleftIcon,
+  closeIcon,
+  fingerprintIcon,
+  filterIcon,
+  favouriteIcon,
+  profileIcon,
+  editIcon,
+  calendarIcon,
+  chatIcon,
+  optionsIcon,
+  onlineIcon,
+  typeIcon,
+  tickIcon,
+  deleteIcon,
+  settingsIcon,
+  starIcon,
+  searchIcon,
+
+  shapesIcon,
+  tangramIcon,
+  numbersIcon,
+  battleshipIcon,
+};
