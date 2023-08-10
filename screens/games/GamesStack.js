@@ -25,6 +25,7 @@ import NumbersScreen from "./numbers/NumbersScreen";
 import BattleshipScreen from "./battleship/BattleshipScreen";
 import GameInProgress from "./GameInProgress";
 import GamePurchase from "./GamePurchase";
+import GameFilterModal from "./GameFilterModal";
 
 const Games = createStackNavigator();
 
@@ -69,6 +70,7 @@ const GamesStack = ({ route, navigation }) => {
         <Games.Screen name="InfoModal" component={InfoModal} />
         <Games.Screen name="PiecesModal" component={PiecesModal} />
         <Games.Screen name="Purchase Game" component={GamePurchase} />
+        <Games.Screen name="Filter Games" component={GameFilterModal} />
       </Games.Group>
 
       {/* Screen for when a game is being played */}

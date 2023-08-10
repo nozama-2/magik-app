@@ -12,7 +12,7 @@ import PastPuzzles from "./components/PastGames";
 
 const TangramScreen = ({ route, navigation }) => {
   return (
-    <View style={[t.flex, t.flexCol]}>
+    <SafeAreaView style={[t.flex, t.flexCol]}>
       <View
         style={[
           t.flex,
@@ -39,7 +39,7 @@ const TangramScreen = ({ route, navigation }) => {
 
         <PastPuzzles />
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 

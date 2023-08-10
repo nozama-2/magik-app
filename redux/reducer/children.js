@@ -17,4 +17,17 @@ const removeChild = (state, action) => {
   };
 };
 
-export { setChild, removeChild };
+const editGames = (state, action) => {
+  return {
+    ...state,
+    children: {
+      ...state.children,
+      [action.child]: {
+        ...state.children[action.child],
+        filteredGames: action.games,
+      },
+    },
+  };
+};
+
+export { setChild, removeChild, editGames };
