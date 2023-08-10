@@ -12,37 +12,34 @@ import PastPuzzles from "./components/PastGames";
 
 const TangramScreen = ({ route, navigation }) => {
   return (
-    // <SafeAreaView>
-      <View style={[t.flex, t.flexCol]}>
-        <View
-          style={[
-            t.flex,
-            t.flexRow,
-            t.justifyBetween,
-            t.mT8,
-            t.mL6,
-            t.z10,
-            { alignItems: "center" },
-          ]}
-        >
-          <BackButton onPress={() => navigation.navigate("Games")} />
-          <Text style={[styles.title, t.mB3, t.mL0]}>Tangram</Text>
-          <Spacer />
-        </View>
-        <View
-          style={[t.p2, t.hFull, { display: "flex", alignItems: "center" }]}
-        >
-          <RatingTitle rating="1560" />
-
-          <NewGameButton
-            onPress={() => {
-              navigation.navigate("PiecesModal", { name: "Tangram" });
-            }}
-          />
-
-          <PastPuzzles />
+    <View style={[t.flex, t.flexCol]}>
+      <View
+        style={[
+          t.flex,
+          t.flexRow,
+          t.justifyBetween,
+          t.mT8,
+          t.mL6,
+          t.z10,
+          { alignItems: "center" },
+        ]}
+      >
+        <BackButton onPress={() => navigation.navigate("Games")} />
+        <Text style={[styles.title, t.mB3, t.mL0]}>Tangram</Text>
+        <Spacer />
       </View>
-    // </SafeAreaView>
+      <View style={[t.p2, t.hFull, { display: "flex", alignItems: "center" }]}>
+        <RatingTitle rating="1560" />
+
+        <NewGameButton
+          onPress={() => {
+            navigation.navigate("PiecesModal", { name: "Tangram" });
+          }}
+        />
+
+        <PastPuzzles />
+      </View>
+    </View>
   );
 };
 
@@ -52,7 +49,7 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 25,
     // backgroundColor: COLORS.lightGray,
     paddingBottom: 10,
-  },  
+  },
   title: {
     fontFamily: "Poppins-Bold",
     fontSize: 35,
