@@ -1,7 +1,8 @@
 import initialState from "../state";
 
 import { disableBottomTabs, enableBottomTabs } from "./bottomTabs";
-import { setChild, removeChild } from "./children";
+import { setChild, removeChild, editGames } from "./children";
+import { buyGame } from "./games";
 
 let reducer = (state = initialState, action) => {
   if (action.type == "disableBottomTabs") {
@@ -12,6 +13,10 @@ let reducer = (state = initialState, action) => {
     return setChild(state, action);
   } else if (action.type == "removeChild") {
     return removeChild(state, action);
+  } else if (action.type == "buyGame") {
+    return buyGame(state, action);
+  } else if (action.type == "editGames") {
+    return editGames(state, action);
   }
 
   return state;

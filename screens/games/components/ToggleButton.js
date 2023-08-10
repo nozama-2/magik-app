@@ -23,6 +23,7 @@ const ToggleButton = ({ isOn, setIsOn }) => {
       onPress={() => {
         setIsOn(!isOn);
       }}
+      _pressed={{ opacity: 0.5 }}
     >
       {isOn ? "Purchased" : "Not Purchased"}
     </Button>

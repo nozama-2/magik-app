@@ -1,13 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { View, Image, Dimensions } from "react-native";
+import { Text, Box, ScrollView } from "native-base";
 import { t } from "react-native-tailwindcss";
 
 import GameCard from "./GameCard";
-import { Text, Box } from "native-base";
 
 import Filter from "./Filter";
+import { useSelector } from "react-redux";
 
-const GamesView = ({ navigation, route, games }) => {
+const GamesView = ({ navigation, route, selectedProfile }) => {
+  const allowedGames = useSelector(
+    (x) => x.children[selectedProfile.id].filteredGames
+  );
+  const games = useSelector((x) => x.games);
   const [filters, setFilters] = useState({
     isPurchased: true,
     gameCategory: "all",
@@ -15,18 +20,30 @@ const GamesView = ({ navigation, route, games }) => {
   const [displayedGames, setDisplayedGames] = useState(games);
 
   useEffect(() => {
-    setDisplayedGames(
-      games
-        .filter((game) =>
-          filters.isPurchased ? game.purchased : !game.purchased
-        )
-        .filter(
-          (game) =>
-            filters.gameCategory == "all" ||
-            game.category == filters.gameCategory
-        )
-    );
-  }, [filters]);
+    if (filters.isPurchased) {
+      setDisplayedGames(
+        games
+          .filter((g) => allowedGames.includes(g.name))
+          .filter(
+            (game) =>
+              filters.gameCategory == "all" ||
+              game.category == filters.gameCategory
+          )
+      );
+    } else {
+      setDisplayedGames(
+        games
+          .filter((game) =>
+            filters.isPurchased ? game.purchased : !game.purchased
+          )
+          .filter(
+            (game) =>
+              filters.gameCategory == "all" ||
+              game.category == filters.gameCategory
+          )
+      );
+    }
+  }, [filters, games, allowedGames]);
 
   const splitIntoTwo = (array) => {
     const newArray = [];
@@ -38,7 +55,7 @@ const GamesView = ({ navigation, route, games }) => {
   };
 
   return (
-    <>
+    <Box w="100%">
       <Filter
         isPurchased={filters.isPurchased}
         setIsPurchased={(x) => {
@@ -50,47 +67,49 @@ const GamesView = ({ navigation, route, games }) => {
         }}
       />
 
-      {displayedGames.length == 0 && (
-        <Box
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-          h="300px"
-        >
-          <Text>No games to show...</Text>
-          <Image
-            source={require("../../../assets/images/sadGif.gif")}
-            style={{ width: 100, height: 100 }}
-          />
-        </Box>
-      )}
+      <ScrollView w="100%" h={400} px={2} showsVerticalScrollIndicator={false}>
+        {displayedGames.length == 0 && (
+          <Box
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            h="300px"
+          >
+            <Text>No games to show...</Text>
+            <Image
+              source={require("../../../assets/images/sadGif.gif")}
+              style={{ width: 100, height: 100 }}
+            />
+          </Box>
+        )}
 
-      {splitIntoTwo(displayedGames).map((element) => (
-        <View style={[t.flex1, t.flexRow, t.justifyBetween]}>
-          <GameCard {...element[0]} route={route} navigation={navigation} />
-          <GameCard {...element[1]} route={route} navigation={navigation} />
-        </View>
-      ))}
-      {displayedGames.length % 2 ? (
-        <View style={[t.flex1, t.flexRow, t.justifyBetween]}>
-          <GameCard
-            {...displayedGames[displayedGames.length - 1]}
-            route={route}
-            navigation={navigation}
-          />
-          <View
-            style={{
-              alignItems: "center",
-              width: Dimensions.get("window").width / 2 - 50,
-              margin: 10,
-              marginTop: 30,
-            }}
-          ></View>
-        </View>
-      ) : (
-        <View></View>
-      )}
-    </>
+        {splitIntoTwo(displayedGames).map((element) => (
+          <View style={[t.flex1, t.flexRow, t.justifyBetween]}>
+            <GameCard {...element[0]} route={route} navigation={navigation} />
+            <GameCard {...element[1]} route={route} navigation={navigation} />
+          </View>
+        ))}
+        {displayedGames.length % 2 ? (
+          <View style={[t.flex1, t.flexRow, t.justifyBetween]}>
+            <GameCard
+              {...displayedGames[displayedGames.length - 1]}
+              route={route}
+              navigation={navigation}
+            />
+            <View
+              style={{
+                alignItems: "center",
+                width: Dimensions.get("window").width / 2 - 50,
+                margin: 10,
+                marginTop: 30,
+              }}
+            ></View>
+          </View>
+        ) : (
+          <View></View>
+        )}
+      </ScrollView>
+    </Box>
   );
 };
 

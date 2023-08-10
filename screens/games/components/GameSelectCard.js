@@ -6,9 +6,10 @@ import {
   TouchableOpacity,
   StyleSheet,
 } from "react-native";
-import { COLORS, icons, images } from "../../../constants";
-import { t } from "react-native-tailwindcss";
 import { Box, Text } from "native-base";
+import Icon from "react-native-vector-icons/FontAwesome";
+
+import { COLORS, icons, images } from "../../../constants";
 
 const colorCatMap = {
   logic: COLORS.secondary,
@@ -16,18 +17,15 @@ const colorCatMap = {
   multi: COLORS.yellow,
 };
 
-const GameCard = ({
+const GameSelectCard = ({
   name,
   ageRangeStart,
   ageRangeEnd,
   category,
-  imageUrl,
-  purchased,
-  price,
-  info,
-  themeColor,
-  route,
-  navigation,
+  selected,
+  chosenGames,
+  setChosenGames,
+  isPaddingCard,
 }) => {
   const e = {
     tangram: icons.tangramIcon,
@@ -36,14 +34,24 @@ const GameCard = ({
     battleship: icons.battleshipIcon,
   };
 
-  return (
+  return isPaddingCard ? (
+    <View
+      style={{
+        ...styles.container,
+        backgroundColor: "transparent",
+      }}
+    ></View>
+  ) : (
     <TouchableOpacity
-      style={styles.container}
+      style={{
+        ...styles.container,
+        backgroundColor: selected ? COLORS.white : COLORS.lightGray,
+      }}
       onPress={() => {
-        if (purchased) {
-          navigation.push(name);
+        if (selected) {
+          setChosenGames(chosenGames.filter((g) => g != name));
         } else {
-          navigation.push("Purchase Game", { name });
+          setChosenGames([...chosenGames, name]);
         }
       }}
     >
@@ -73,23 +81,14 @@ const GameCard = ({
           </Text>
         </Box>
 
-        <TouchableOpacity
-          onPress={() =>
-            navigation.push("InfoModal", { name: name, info: info })
-          }
+        <Box
+          borderWidth="1.5"
+          borderRadius={20}
+          p={2}
+          borderColor={selected ? COLORS.green : COLORS.gray}
         >
-          <Image
-            source={icons.infoIcon}
-            resizeMode="contain"
-            style={{
-              marginTop: 0,
-              alignSelf: "center",
-              width: 25,
-              height: 25,
-              tintColor: COLORS.gray,
-            }}
-          />
-        </TouchableOpacity>
+          <Icon name="check" color={selected ? COLORS.green : "transparent"} />
+        </Box>
       </Box>
 
       {/* The Main Game Image Thumbnail */}
@@ -101,10 +100,6 @@ const GameCard = ({
           alignSelf: "center",
           width: 50,
           height: 50,
-          // shadowOpacity: 0.3,
-          // shadowRadius: 20,
-          // shadowColor: COLORS.black,
-          // shadowOffset: { height: 10, width: 0 }
         }}
       />
 
@@ -130,65 +125,16 @@ const GameCard = ({
           {category}
         </Text>
       </Box>
-
-      {/* PLAY BUTTON */}
-      <Box
-        bg={{
-          linearGradient: {
-            colors: ["#fa7573", "#fa7573", "#fcc095", "#fcbb5d", "#fcbb5d"],
-            start: [1, 0],
-            end: [0, 1],
-          },
-        }}
-        _text={{
-          fontSize: "md",
-          fontWeight: "medium",
-          color: "warmGray.50",
-          textAlign: "center",
-        }}
-        style={[
-          t.flex,
-          t.flexRow,
-          t.mT4,
-          t.justifyCenter,
-          styles.playButton,
-          styles.shadow,
-        ]}
-      >
-        {purchased ? (
-          <Image
-            source={icons.playIcon}
-            resizeMode="contain"
-            style={{
-              alignSelf: "center",
-              width: 20,
-              height: 20,
-              tintColor: COLORS.white,
-            }}
-          />
-        ) : (
-          <Text
-            alignSelf="center"
-            h="20px"
-            color={COLORS.white}
-            bold
-            fontSize={15}
-          >
-            ${price}
-          </Text>
-        )}
-      </Box>
     </TouchableOpacity>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: COLORS.white,
     borderRadius: 8,
     alignItems: "center",
     width: Dimensions.get("window").width / 2 - 50,
-    // margin: 10,
+    paddingBottom: 20,
     marginTop: 30,
     shadowOpacity: 0.05,
     shadowRadius: 10,
@@ -214,4 +160,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default GameCard;
+export default GameSelectCard;

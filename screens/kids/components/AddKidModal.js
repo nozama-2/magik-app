@@ -37,7 +37,7 @@ function AddKidScreen({ navigation, route }) {
         }
   );
 
-  let getInitials = (name) => {
+  const getInitials = (name) => {
     let n = name.split(" ");
     let i = n.map((w) => w[0]);
     return i.join("").toUpperCase();

@@ -1,100 +1,111 @@
-import React from "react";
-import { StyleSheet, SafeAreaView, View, Text } from "react-native";
-import { COLORS } from "../../constants/theme";
-import { Center, ScrollView, Box } from "native-base";
+import React, { useEffect, useState } from "react";
+import {
+  StyleSheet,
+  SafeAreaView,
+  View,
+  Dimensions,
+  TouchableOpacity,
+  Image,
+} from "react-native";
+import { Center, Box, Avatar, useDisclose, Text } from "native-base";
 import { t } from "react-native-tailwindcss";
 
 import SearchBar from "./components/SearchBar";
 import DailyChallenge from "./components/DailyChallenge";
 import GamesView from "./components/GamesView";
-
-const games = [
-  {
-    name: "Matching Shapes",
-    themeColor: COLORS.primary,
-    imageUrl: "assets/images/games_images/tangram.png",
-    info: "Match the Shape in the corresponding box! When there multiple shapes, place each shape into its cutout!",
-    purchased: true,
-    category: "logic",
-    ageRangeStart: 3,
-    ageRangeEnd: 5,
-  },
-  {
-    name: "Tangram",
-    themeColor: COLORS.secondary,
-    imageUrl: "assets/images/games_images/tangram.png",
-    info: "Tangram! Insert each piece one by one into the cutout, until it fits perfectly.",
-    purchased: true,
-    category: "logic",
-    ageRangeStart: 6,
-    ageRangeEnd: 12,
-  },
-  {
-    name: "Numbers",
-    themeColor: COLORS.secondary,
-    imageUrl: "assets/images/games_images/tangram.png",
-    info: "Place the numbers in each blank! Make sure all the equations add up!",
-    purchased: true,
-    category: "math",
-    ageRangeStart: 3,
-    ageRangeEnd: 5,
-  },
-  {
-    name: "Battleship",
-    themeColor: COLORS.secondary,
-    imageUrl: "assets/images/games_images/tangram.png",
-    info: "Place your ships on your side of the screen. Try and sink your opponents ships at the same time!",
-    purchased: false,
-    category: "multi",
-    ageRangeStart: 6,
-    ageRangeEnd: 12,
-  },
-];
+import { useSelector, useStore } from "react-redux";
+import { COLORS } from "../../constants/theme";
+import ProfileActionsheet from "./components/ProfileActionsheet";
+import FilterButton from "../home/components/FilterButton";
 
 const challengesCompleted = 1;
 const totalChallenges = 3;
 
 const GamesScreen = ({ route, navigation }) => {
+  const getInitials = (name) => {
+    let n = name.split(" ");
+    let i = n.map((w) => w[0]);
+    return i.join("").toUpperCase();
+  };
+
+  const profiles = { ...useStore().getState().children };
+
+  const profileArr = Object.keys(profiles).map((x) => ({
+    ...profiles[x],
+    id: x,
+  }));
+
+  const { isOpen, onOpen, onClose } = useDisclose();
+  const [selectedProfile, setSelectedProfile] = useState(profileArr[0]);
+
+  useEffect(() => {
+    console.log(profiles[selectedProfile["id"]]["img"]);
+  }, [selectedProfile]);
+
   return (
     <SafeAreaView>
-      <View style={[t.flex, t.flexCol]}>
-        <Text style={[styles.title]}>My Games</Text>
+      <Box>
+        {/* Dropdown to select profile */}
+        <ProfileActionsheet
+          isOpen={isOpen}
+          onClose={onClose}
+          selectedProfile={selectedProfile}
+          profileArr={profileArr}
+          setSelectedProfile={setSelectedProfile}
+        />
+
+        {/* Top bar */}
+        <Box
+          w="100%"
+          pt="20px"
+          px="30px"
+          display="flex"
+          flexDir="row"
+          justifyContent="space-between"
+          alignItems="center"
+        >
+          <FilterButton
+            onPress={() => {
+              navigation.navigate("Filter Games", { id: selectedProfile.id });
+            }}
+          />
+          <Text fontFamily="Poppins-Bold" fontSize={26}>
+            Games
+          </Text>
+          <TouchableOpacity onPress={onOpen}>
+            {profiles[selectedProfile["id"]]["img"] ? (
+              <Avatar
+                size="40px"
+                source={{ uri: profiles[selectedProfile["id"]]["img"] }}
+              />
+            ) : (
+              <Avatar size="40px">{getInitials(selectedProfile.name)}</Avatar>
+            )}
+          </TouchableOpacity>
+        </Box>
+
+        {/* Content */}
         <View style={[t.p2, { display: "flex", alignItems: "center" }]}>
           <SearchBar />
 
           <Center w="100%" px={3}>
-            <ScrollView w="100%" px={2} showsVerticalScrollIndicator={false}>
-              {/* Daily challenge */}
-              <DailyChallenge
-                challengesCompleted={challengesCompleted}
-                totalChallenges={totalChallenges}
-              />
+            {/* Daily challenge */}
+            <DailyChallenge
+              challengesCompleted={challengesCompleted}
+              totalChallenges={totalChallenges}
+            />
 
-              {/* Collection of Games in the form of Cards in rows of 2 */}
-              <GamesView navigation={navigation} route={route} games={games} />
-            </ScrollView>
+            {/* Collection of Games in the form of Cards in rows of 2 */}
+            <GamesView
+              navigation={navigation}
+              route={route}
+              selectedProfile={selectedProfile}
+            />
           </Center>
         </View>
-      </View>
+      </Box>
     </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({
-  title: {
-    fontFamily: "Poppins-Bold",
-    fontSize: 35,
-    fontWeight: 700,
-    alignSelf: "flex-start",
-    color: COLORS.black,
-    paddingLeft: 20,
-    paddingTop: 30,
-  },
-  text: {
-    fontFamily: "Poppins-Medium",
-    fontSize: 12,
-    alignSelf: "center",
-  },
-});
 
 export default GamesScreen;
