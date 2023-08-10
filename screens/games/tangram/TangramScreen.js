@@ -12,7 +12,7 @@ import PastPuzzles from "./components/PastGames";
 
 const TangramScreen = ({ route, navigation }) => {
   return (
-    <SafeAreaView>
+    // <SafeAreaView>
       <View style={[t.flex, t.flexCol]}>
         <View
           style={[
@@ -41,13 +41,18 @@ const TangramScreen = ({ route, navigation }) => {
           />
 
           <PastPuzzles />
-        </View>
       </View>
-    </SafeAreaView>
+    // </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
+  roundedTop: {
+    borderBottomLeftRadius: 25,
+    borderBottomRightRadius: 25,
+    // backgroundColor: COLORS.lightGray,
+    paddingBottom: 10,
+  },  
   title: {
     fontFamily: "Poppins-Bold",
     fontSize: 35,

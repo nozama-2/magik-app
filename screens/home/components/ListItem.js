@@ -4,10 +4,13 @@ import { Icon } from 'react-native-elements';
 import { t } from "react-native-tailwindcss";
 import Badge from './Badge';
 
-const ListItem = ({name, rank, rating}) => {
+const ListItem = ({name, rank, rating, navigation}) => {
+
+
     return (
         <TouchableOpacity
             style={[styles.container, { backgroundColor: "#F6F6F6" }]}
+            onPress={() => {navigation.push('Game Stats', {name: name})}}
         >
             <View style={[t.flex, t.flexCol]}>
                 <View style={[t.flex, t.flexRow, t.h3_4, t.wFull, t.justifyBetween]}>

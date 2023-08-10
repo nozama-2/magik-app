@@ -34,8 +34,10 @@ export default function App() {
     const loadFonts = async () => {
         await Font.loadAsync({
             "Poppins-Regular": require("./assets/fonts/Poppins-Regular.ttf"),
+            "Poppins-Bold": require("./assets/fonts/Poppins-Bold.ttf"),
             "Poppins-Thin": require("./assets/fonts/Poppins-Thin.ttf"),
             "Poppins-Light": require("./assets/fonts/Poppins-Light.ttf"),
+            "Collegiate": require("./assets/fonts/Collegiate.ttf"),
         });
         setIsLoaded(true);
     };

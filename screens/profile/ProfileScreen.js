@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
     marginLeft: 3,
   },
   subHeader: {
-    fontFamily: "Poppins-SemiBold",
+    fontFamily: "Poppins-Regular",
     marginBottom: 10,
     marginTop: 17,
     color: "#888899",

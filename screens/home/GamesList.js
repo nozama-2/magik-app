@@ -7,9 +7,9 @@ const GamesList = ({ route, navigation }) => {
     return (
         <View>
             <ScrollView style={[t.hFull, styles.scrollableGamesList]}>
-                <ListItem name="Tangram" rank="98723" rating={1580} />
-                <ListItem name="Matching Shapes" rank="123872" rating={1480} />
-                <ListItem name="Battleship" rank="134372" rating={1380} />
+                <ListItem name="Tangram" rank="98723" rating={1580} navigation={navigation}  />
+                <ListItem name="Matching Shapes" rank="123872" rating={1480} navigation={navigation}  />
+                <ListItem name="Battleship" rank="134372" rating={1380} navigation={navigation} />
             </ScrollView>
         </View>
     )

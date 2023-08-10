@@ -40,7 +40,7 @@ const HomeScreen = ({ navigation }) => {
       <View style={styles.top}>
         <Spacer />
         <HomeTitle />
-        <FilterButton onPress={() => navigation.push("Filters")} />
+        <Spacer />
       </View>
 
       {/* This is the main portion of the screen */}
