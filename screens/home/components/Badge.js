@@ -2,10 +2,10 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { t } from 'react-native-tailwindcss'; 
 
-const Badge = (props) => {
+const Badge = ({ value }) => {
     return (
         <View style={[styles.badge, t.bgGreen300]}>
-            <Text style={[t.textGray800, styles.text]}>{props.value}</Text>
+            <Text style={[t.textGray800, styles.text]}>{value}</Text>
         </View>
     )
 }

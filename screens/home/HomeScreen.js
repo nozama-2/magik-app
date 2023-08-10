@@ -61,7 +61,7 @@ const HomeScreen = ({ navigation }) => {
             <Select.Item label="Johnny Smith" value="cross" />
           </Select>
         </View>
-
+      
         {/* This is going to be the main 2 sub sections */}
         <View style={[styles.horizontalContainer]}>
           {/* Left: Streaks */}
