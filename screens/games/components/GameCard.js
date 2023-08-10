@@ -22,6 +22,8 @@ const GameCard = ({
   ageRangeEnd,
   category,
   imageUrl,
+  purchased,
+  price,
   info,
   themeColor,
   route,
@@ -37,7 +39,13 @@ const GameCard = ({
   return (
     <TouchableOpacity
       style={styles.container}
-      onPress={() => navigation.push(name)}
+      onPress={() => {
+        if (purchased) {
+          navigation.push(name);
+        } else {
+          navigation.push("Purchase Game", { name });
+        }
+      }}
     >
       {/* Action Button: Information buton to teach the player how to play the game */}
       <Box
@@ -127,7 +135,7 @@ const GameCard = ({
       <Box
         bg={{
           linearGradient: {
-            colors: ["red.500", "violet.500"],
+            colors: ["#fa7573", "#fa7573", "#fcc095", "#fcbb5d", "#fcbb5d"],
             start: [1, 0],
             end: [0, 1],
           },
@@ -147,16 +155,28 @@ const GameCard = ({
           styles.shadow,
         ]}
       >
-        <Image
-          source={icons.playIcon}
-          resizeMode="contain"
-          style={{
-            alignSelf: "center",
-            width: 20,
-            height: 20,
-            tintColor: COLORS.white,
-          }}
-        />
+        {purchased ? (
+          <Image
+            source={icons.playIcon}
+            resizeMode="contain"
+            style={{
+              alignSelf: "center",
+              width: 20,
+              height: 20,
+              tintColor: COLORS.white,
+            }}
+          />
+        ) : (
+          <Text
+            alignSelf="center"
+            h="20px"
+            color={COLORS.white}
+            bold
+            fontSize={15}
+          >
+            ${price}
+          </Text>
+        )}
       </Box>
     </TouchableOpacity>
   );
@@ -188,6 +208,9 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 8,
     borderBottomRightRadius: 8,
     width: "100%",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
 
