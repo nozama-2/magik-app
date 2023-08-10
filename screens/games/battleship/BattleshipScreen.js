@@ -10,7 +10,7 @@ import NewGameButton from "../components/NewGameButton";
 import RatingTitle from "./components/RatingTitle";
 import PastPuzzles from "./components/PastGames";
 
-const TangramScreen = ({ route, navigation }) => {
+const BattleshipScreen = ({ route, navigation }) => {
   return (
     <SafeAreaView>
       <View style={[t.flex, t.flexCol]}>
@@ -26,17 +26,17 @@ const TangramScreen = ({ route, navigation }) => {
           ]}
         >
           <BackButton onPress={() => navigation.navigate("Games")} />
-          <Text style={[styles.title, t.mB3, t.mL0]}>Tangram</Text>
+          <Text style={[styles.title, t.mB3, t.mL0]}>Battleship</Text>
           <Spacer />
         </View>
         <View
           style={[t.p2, t.hFull, { display: "flex", alignItems: "center" }]}
         >
-          <RatingTitle rating="1560" />
+          <RatingTitle rating="2000" />
 
           <NewGameButton
             onPress={() => {
-              navigation.navigate("PiecesModal", { name: "Tangram" });
+              navigation.navigate("PiecesModal", { name: "Battleship" });
             }}
           />
 
@@ -64,4 +64,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default TangramScreen;
+export default BattleshipScreen;

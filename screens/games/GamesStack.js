@@ -13,12 +13,18 @@ import { COLORS, FONTS, SIZES, icons, images } from "../../constants";
 
 import GamesScreen from "./GamesScreen";
 import InfoModal from "./InfoModal";
+import PiecesModal from "./PiecesModal";
 import { useDispatch } from "react-redux";
 import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
 
 // These are the imports for all the screens for the individual games
 // There are currently 4
 import TangramScreen from "./tangram/TangramScreen";
+import MatchingShapesScreen from "./matchingShapes/MatchingShapesScreen";
+import NumbersScreen from "./numbers/NumbersScreen";
+import BattleshipScreen from "./battleship/BattleshipScreen";
+import GameInProgress from "./GameInProgress";
+import GamePurchase from "./GamePurchase";
 
 const Games = createStackNavigator();
 
@@ -44,6 +50,9 @@ const GamesStack = ({ route, navigation }) => {
       {/* These are the screens for all the games */}
       <Games.Group>
         <Games.Screen name="Tangram" component={TangramScreen} />
+        <Games.Screen name="Matching Shapes" component={MatchingShapesScreen} />
+        <Games.Screen name="Numbers" component={NumbersScreen} />
+        <Games.Screen name="Battleship" component={BattleshipScreen} />
       </Games.Group>
 
       {/* These are all the modals */}
@@ -58,6 +67,13 @@ const GamesStack = ({ route, navigation }) => {
         }}
       >
         <Games.Screen name="InfoModal" component={InfoModal} />
+        <Games.Screen name="PiecesModal" component={PiecesModal} />
+        <Games.Screen name="Purchase Game" component={GamePurchase} />
+      </Games.Group>
+
+      {/* Screen for when a game is being played */}
+      <Games.Group>
+        <Games.Screen name="In Progress" component={GameInProgress} />
       </Games.Group>
     </Games.Navigator>
   );
