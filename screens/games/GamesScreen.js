@@ -75,11 +75,11 @@ const GamesScreen = ({ route, navigation }) => {
           <TouchableOpacity onPress={onOpen}>
             {profiles[selectedProfile["id"]]["img"] ? (
               <Avatar
-                size="40px"
+                size="60px"
                 source={{ uri: profiles[selectedProfile["id"]]["img"] }}
               />
             ) : (
-              <Avatar size="40px">{getInitials(selectedProfile.name)}</Avatar>
+              <Avatar size="60px">{getInitials(selectedProfile.name)}</Avatar>
             )}
           </TouchableOpacity>
         </Box>

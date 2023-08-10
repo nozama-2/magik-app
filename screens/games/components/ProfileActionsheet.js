@@ -38,11 +38,11 @@ const ProfileActionsheet = ({
               }}
             >
               <Box display="flex" flexDir="row" alignItems="center">
-                <Avatar source={{ uri: p["img"] }} mr={5}>
+                <Avatar source={{ uri: p["img"] }} mr={5} size={60}>
                   {getInitials(p["name"])}
                 </Avatar>
 
-                <Text>{p.name}</Text>
+                <Text fontSize={15}>{p.name}</Text>
               </Box>
             </Actionsheet.Item>
           );

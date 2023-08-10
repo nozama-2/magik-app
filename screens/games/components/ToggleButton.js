@@ -7,11 +7,11 @@ const ToggleButton = ({ isOn, setIsOn }) => {
   return (
     <Button
       // w="100px"
-      h="30px"
+      h="40px"
+      px={5}
       borderRadius={20}
-      py="3px"
       _text={{
-        fontSize: "10px",
+        fontSize: "12px",
         margin: 0,
         color: COLORS.black,
         opacity: 1,

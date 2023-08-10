@@ -22,7 +22,7 @@ const Filter = ({
       <Select
         selectedValue={gameCategory}
         width="120px"
-        height="30px"
+        height="40px"
         borderRadius={20}
         borderColor={COLORS.darkgray}
         opacity={0.8}
