@@ -8,7 +8,10 @@ import GameCard from "./GameCard";
 import Filter from "./Filter";
 import { useSelector } from "react-redux";
 
-const GamesView = ({ navigation, route }) => {
+const GamesView = ({ navigation, route, selectedProfile }) => {
+  const allowedGames = useSelector(
+    (x) => x.children[selectedProfile.id].filteredGames
+  );
   const games = useSelector((x) => x.games);
   const [filters, setFilters] = useState({
     isPurchased: true,
@@ -17,18 +20,30 @@ const GamesView = ({ navigation, route }) => {
   const [displayedGames, setDisplayedGames] = useState(games);
 
   useEffect(() => {
-    setDisplayedGames(
-      games
-        .filter((game) =>
-          filters.isPurchased ? game.purchased : !game.purchased
-        )
-        .filter(
-          (game) =>
-            filters.gameCategory == "all" ||
-            game.category == filters.gameCategory
-        )
-    );
-  }, [filters, games]);
+    if (filters.isPurchased) {
+      setDisplayedGames(
+        games
+          .filter((g) => allowedGames.includes(g.name))
+          .filter(
+            (game) =>
+              filters.gameCategory == "all" ||
+              game.category == filters.gameCategory
+          )
+      );
+    } else {
+      setDisplayedGames(
+        games
+          .filter((game) =>
+            filters.isPurchased ? game.purchased : !game.purchased
+          )
+          .filter(
+            (game) =>
+              filters.gameCategory == "all" ||
+              game.category == filters.gameCategory
+          )
+      );
+    }
+  }, [filters, games, allowedGames]);
 
   const splitIntoTwo = (array) => {
     const newArray = [];
