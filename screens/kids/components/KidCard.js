@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   editKidButton: {
-    backgroundColor: COLORS.secondary,
+    backgroundColor: COLORS.primary,
     borderRadius: 10,
     paddingVertical: 5,
     marginBottom: 10

@@ -13,12 +13,12 @@ const ToggleButton = ({ isOn, setIsOn }) => {
       _text={{
         fontSize: "10px",
         margin: 0,
-        color: COLORS.black,
+        color: isOn ? COLORS.black : COLORS.black,
         opacity: 1,
       }}
       borderWidth={1}
-      borderColor={COLORS.darkgray}
-      backgroundColor="transparent"
+      borderColor={isOn ? COLORS.green : COLORS.darkgray}
+      backgroundColor={isOn ? COLORS.green : "transparent"}
       opacity={0.8}
       onPress={() => {
         setIsOn(!isOn);

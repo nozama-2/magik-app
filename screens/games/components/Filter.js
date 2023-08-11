@@ -12,6 +12,7 @@ const Filter = ({
   return (
     <Box
       mt={3}
+      mb={3}
       display="flex"
       flexDir="row"
       justifyContent="space-between"

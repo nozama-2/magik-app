@@ -8,7 +8,7 @@ import BackButton from "../components/BackButton";
 
 const NumbersScreen = ({ route, navigation }) => {
   return (
-    <SafeAreaView backgroundColor={COLORS.purple}>
+    <SafeAreaView backgroundColor={COLORS.white}>
       <Box px={10} h="100%">
         <BackButton
           style={{
@@ -36,13 +36,14 @@ const NumbersScreen = ({ route, navigation }) => {
           justifyContent="space-evenly"
           alignItems="center"
         >
-          <Text fontSize="50px" color={COLORS.white} bold>
+          <Text fontSize="50px" color={COLORS.black} bold>
             Numbers
           </Text>
 
           <Button
             w="300px"
             py={30}
+            style={styles.playButton}
             backgroundColor={COLORS.secondary}
             borderRadius={20}
             _pressed={{ opacity: 0.5 }}
@@ -50,7 +51,7 @@ const NumbersScreen = ({ route, navigation }) => {
               navigation.navigate("PiecesModal", { name: "Numbers" });
             }}
           >
-            <Box
+           <Box
               display="flex"
               flexDir="row"
               alignItems="center"
@@ -83,6 +84,17 @@ const styles = StyleSheet.create({
     fontSize: 12,
     alignSelf: "center",
   },
+  playButton: {
+    backgroundColor: COLORS.green, 
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 2,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 3.84,
+    elevation: 3,
+  }
 });
 
 export default NumbersScreen;

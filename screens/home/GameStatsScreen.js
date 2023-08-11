@@ -1,6 +1,6 @@
 import React from 'react';
 import { TouchableOpacity, SafeAreaView, StyleSheet, View, Text, ScrollView, Image } from 'react-native';
-import { Avatar, Center } from 'native-base';
+import { Avatar, Box, Center } from 'native-base';
 import { t } from "react-native-tailwindcss";
 import { COLORS, icons } from '../../constants';
 import BackButton from './components/BackButton';
@@ -67,7 +67,16 @@ function GameStatsScreen({ route, navigation }) {
 
                  {/* This is the information about the number of games played and time spent on the application */}
                  <View style={[t.flex, t.flexRow, {marginHorizontal: 24, marginTop: 40, justifyContent: "space-around"}]}>
-                 <View style={[styles.gamesPlayedCard]}>
+                 <Box style={[styles.gamesPlayedCard]}
+                    bg={{
+                        linearGradient: {
+                        // colors: [COLORS.lightGrayGradientLeft, COLORS.lightGrayGradientRight],
+                        colors: [COLORS.lightred, COLORS.lightred],
+                        start: [0, 1],
+                        end: [1, 0],
+                        },
+                    }}          
+                 >
                         <Image
                             source={icons.puzzlesIcon}
                             resizeMode="contain"
@@ -77,9 +86,11 @@ function GameStatsScreen({ route, navigation }) {
                             height: 50,
                         }}
                         />
-                        <Text style={styles.numberGamesText}>579</Text>
+                        <Text style={styles.numberGamesText}>578</Text>
                         <Text style={styles.gamesText}>Games</Text>
-                    </View>
+                    </Box>
+
+                    {/* This is the time chart */}
                     <TimeChart />
                 </View>
 
@@ -136,11 +147,11 @@ const styles = StyleSheet.create({
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        borderWidth: 3,
+        // borderWidth: 1,
         borderRadius: 10,
         paddingVertical: 10,
-        paddingHorizontal: 35,
-        borderColor: COLORS.darkgray,
+        paddingHorizontal: 40,
+        // borderColor: COLORS.darkgray,
         backgroundColor: COLORS.lightGray,
     },
     numberGamesText: {

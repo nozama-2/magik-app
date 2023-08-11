@@ -3,7 +3,8 @@ import { StyleSheet, View, Text, Dimensions } from 'react-native';
 
 import { ProgressChart } from "react-native-chart-kit";
 
-import { COLORS } from '../../../constants'
+import { t } from 'react-native-tailwindcss';
+import { COLORS } from '../../../constants';
 
 function TimeChart() {
 
@@ -16,13 +17,13 @@ function TimeChart() {
             <View style={styles.progressContainer}>
                 <View style={{
                     position: "absolute", zIndex: 99,
-                    marginLeft: 45,
+                    marginLeft: 35,
                     marginTop: 55
                 }}>
                     <Text style={{fontFamily: "Poppins-Bold", fontSize: 16, textAlign: 'center'}}>
                         15 min
                     </Text>
-                    <Text style={{fontFamily: "Poppins-Regular", fontSize: 10, textAlign: 'center'}}>
+                    <Text style={{fontFamily: "Poppins-Regular", fontSize: 12, textAlign: 'center'}}>
                         on Tangram
                     </Text>
                 </View>  
@@ -34,9 +35,11 @@ function TimeChart() {
                     strokeWidth={16}
                     radius={60}
                     chartConfig={{
-                        backgroundColor: "#e26a00",
-                        backgroundGradientFrom: "#D3CCE3",
-                        backgroundGradientTo: "#E9E4F0",
+                        // backgroundColor: "#e26a00",
+                        backgroundGradientFrom: "#fed7d7",
+                        backgroundGradientTo: "#fed7d7",
+                        // backgroundGradientFrom: COLORS.lightGrayGradientLeft,
+                        // backgroundGradientTo: COLORS.lightGrayGradientRight,
                         decimalPlaces: 2, // optional, defaults to 2dp
                         color: (opacity = 1) => `rgba(255, 97, 95, ${opacity})`,
                         labelColor: (opacity = 1) => `rgba(255, 97, 95, ${opacity})`,
@@ -45,7 +48,9 @@ function TimeChart() {
                         }
                     }}
                     style={{
-                        borderRadius: 10
+                        borderRadius: 10,
+                        // borderWidth: 1,
+                        // borderColor: COLORS.darkgray,
                     }}
                     hideLegend={true}
                     />
@@ -55,7 +60,10 @@ function TimeChart() {
 
 const styles = StyleSheet.create({
     progressContainer: {
-        position: 'relative'
+        position: 'relative',
+        borderRadius: 10, 
+        // borderWidth: 1,
+        // borderColor: COLORS.darkgray,
     }
 });
 

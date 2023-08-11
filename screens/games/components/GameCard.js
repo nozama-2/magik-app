@@ -135,7 +135,7 @@ const GameCard = ({
       <Box
         bg={{
           linearGradient: {
-            colors: ["#fa7573", "#fa7573", "#fcc095", "#fcbb5d", "#fcbb5d"],
+            colors: [COLORS.tomatoGradientLeft, COLORS.tomatoGradientRight],
             start: [1, 0],
             end: [0, 1],
           },

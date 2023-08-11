@@ -3,7 +3,8 @@ import { StyleSheet, View, Text, Dimensions } from 'react-native';
 
 import { LineChart } from "react-native-chart-kit";
 
-import { COLORS } from '../../../constants'
+import { COLORS } from '../../../constants';
+
 import { t } from 'react-native-tailwindcss'
 
 
@@ -29,18 +30,18 @@ function RatingChart() {
                     yAxisSuffix=""
                     yAxisInterval={1} // optional, defaults to 1
                     chartConfig={{
-                    backgroundColor: "#D3CCE3",
-                    backgroundGradientFrom: "#D3CCE3",
-                    backgroundGradientTo: "#E9E4F0",
+                    // backgroundColor: "#D3CCE3",
+                    backgroundGradientFrom: COLORS.white,
+                    backgroundGradientTo: COLORS.white,
                     decimalPlaces: 0, // optional, defaults to 2dp
-                    color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
+                    color: (opacity = 1) => `rgba(255, 0, 0, ${opacity})`,
                     labelColor: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
                     style: {
-                        borderRadius: 16
+                        borderRadius: 10
                     },
                     propsForDots: {
-                        r: "6",
-                        strokeWidth: "2",
+                        r: "4",
+                        strokeWidth: "1",
                         stroke: COLORS.primary
                     }
                     }}
@@ -51,29 +52,29 @@ function RatingChart() {
                     
                     marginHorizontal: 30,
 
-                    shadowColor: "#000",
-                    shadowOffset: {
-                        width: 2,
-                        height: 2,
-                    },
-                    shadowOpacity: 0.25,
-                    shadowRadius: 3.84,
-                    elevation: 3,
+                    // shadowColor: "#000",
+                    // shadowOffset: {
+                    //     width: 2,
+                    //     height: 2,
+                    // },
+                    // shadowOpacity: 0.1,
+                    // shadowRadius: 3.84,
+                    // elevation: 3,
                     }}
                 />
                 
 
                 {/* This is for the 3 stats below the chart */}
                 <View style={[t.flex, t.flexRow, t.justifyAround, t.mL10]}>
-                    <View style={[badges.badge, t.bgRed200]}>
+                    <View style={[badges.badge, {backgroundColor: COLORS.lightred}]}>
                         <Text style={[badges.ratingText]}>Current</Text>
                         <Text style={[badges.text]}>1570</Text>
                     </View>
-                    <View style={[badges.badge, t.bgRed200]}>
+                    <View style={[badges.badge, {backgroundColor: COLORS.lightred}]}>
                         <Text style={[badges.ratingText]}>Percentile</Text>
                         <Text style={[badges.text]}>95.1%</Text>
                     </View>
-                    <View style={[badges.badge, t.bgRed200]}>
+                    <View style={[badges.badge, {backgroundColor: COLORS.lightred}]}>
                         <Text style={[badges.ratingText]}>Rank</Text>
                         <Text style={[badges.text]}>#12032</Text>
                     </View>

@@ -9,7 +9,7 @@ import NewGameButton from "../components/NewGameButton";
 
 const MatchingShapesScreen = ({ route, navigation }) => {
   return (
-    <SafeAreaView backgroundColor={COLORS.purple}>
+    <SafeAreaView backgroundColor={COLORS.white}>
       <Box px={10} h="100%">
         <BackButton
           style={{
@@ -37,14 +37,14 @@ const MatchingShapesScreen = ({ route, navigation }) => {
           justifyContent="space-evenly"
           alignItems="center"
         >
-          <Text fontSize="50px" color={COLORS.white} bold>
-            MATCHING SHAPES
+          <Text fontSize="40px" color={COLORS.black} style={{fontFamily: "Poppins-Bold", textAlign: 'center'}}>
+            Matching Shapes
           </Text>
 
           <Button
             w="300px"
             py={30}
-            backgroundColor={COLORS.secondary}
+            style={styles.playButton}
             borderRadius={20}
             _pressed={{ opacity: 0.5 }}
             onPress={() => {
@@ -84,6 +84,17 @@ const styles = StyleSheet.create({
     fontSize: 12,
     alignSelf: "center",
   },
+  playButton: {
+    backgroundColor: COLORS.green, 
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 2,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 3.84,
+    elevation: 3,
+  }
 });
 
 export default MatchingShapesScreen;

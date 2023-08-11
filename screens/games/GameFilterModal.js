@@ -109,7 +109,7 @@ const GameFilterModal = ({ navigation, route }) => {
           </Button>
           <Button
             w="55%"
-            backgroundColor={COLORS.secondary}
+            backgroundColor={COLORS.green}
             onPress={handleSave}
             _pressed={{
               opacity: 0.5,

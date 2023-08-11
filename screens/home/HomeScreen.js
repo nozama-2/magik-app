@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {
   StyleSheet,
   Dimensions,
@@ -7,21 +7,36 @@ import {
   Text,
   ScrollView,
 } from "react-native";
-import { View, Box } from "native-base";
+import { View, Box, useDisclose, Avatar } from "native-base";
 
 import HomeTitle from "./components/HomeTitle";
 import Spacer from "./components/Spacer";
-import FilterButton from "./components/FilterButton";
+import { useSelector, useStore } from "react-redux";
 
 import { t } from "react-native-tailwindcss";
 import { COLORS, icons } from "../../constants";
 import { Select } from "native-base";
 import Chart from "./components/Chart/Index";
-
+import ProfileActionsheet from "./components/ProfileActionsheet";
 import HomeTopNavigator from "./navigation/HomeTopNavigator";
 
 const HomeScreen = ({ navigation }) => {
 
+  const getInitials = (name) => {
+    let n = name.split(" ");
+    let i = n.map((w) => w[0]);
+    return i.join("").toUpperCase();
+  };
+
+  const profiles = { ...useStore().getState().children };
+
+  const profileArr = Object.keys(profiles).map((x) => ({
+    ...profiles[x],
+    id: x,
+  }));
+
+  const { isOpen, onOpen, onClose } = useDisclose();
+  const [selectedProfile, setSelectedProfile] = useState(profileArr[0]);
 
   const screenTime = [
     { number: 8, name: "Tangram", color: COLORS.blue },
@@ -31,37 +46,39 @@ const HomeScreen = ({ navigation }) => {
     { number: 37, name: "Unused", color: COLORS.lightGray },
   ];
 
-
-  const [child, setChild] = React.useState("");
-
   return (
     <View style={styles.containerHome}>
       {/* This is the top section of the screen for title and action icons */}
       <View style={styles.top}>
         <Spacer />
         <HomeTitle />
-        <Spacer />
+        
+        
+        <TouchableOpacity onPress={onOpen}>
+            {profiles[selectedProfile["id"]]["img"] ? (
+              <Avatar
+                size="40px"
+                source={{ uri: profiles[selectedProfile["id"]]["img"] }}
+              />
+            ) : (
+              <Avatar size="40px">{getInitials(selectedProfile.name)}</Avatar>
+            )}
+          </TouchableOpacity>
+          
+
+          {/* Dropdown to select profile */}
+        <ProfileActionsheet
+          isOpen={isOpen}
+          onClose={onClose}
+          selectedProfile={selectedProfile}
+          profileArr={profileArr}
+          setSelectedProfile={setSelectedProfile}
+        />
+
       </View>
 
       {/* This is the main portion of the screen */}
       <View style={styles.mainContainer}>
-        {/* This is where you are going to select the children */}
-        <View style={styles.childSelect}>
-          <Select
-            selectedValue={child}
-            minWidth="200"
-            accessibilityLabel="Select Child"
-            placeholder="Select Child"
-            _selectedItem={{ bg: "teal.600" }}
-            mt={1}
-            onValueChange={(itemValue) => setChild(itemValue)}
-          >
-            <Select.Item label="Samantha" value="ux" />
-            <Select.Item label="Jane Doe" value="web" />
-            <Select.Item label="Johnny Smith" value="cross" />
-          </Select>
-        </View>
-      
         {/* This is going to be the main 2 sub sections */}
         <View style={[styles.horizontalContainer]}>
           {/* Left: Streaks */}
@@ -70,9 +87,9 @@ const HomeScreen = ({ navigation }) => {
             <Box
                 bg={{
                   linearGradient: {
-                    colors: ["lightBlue.500", "violet.500"],
-                    start: [1, 0],
-                    end: [0, 1]
+                    colors: [COLORS.cherryGradientLeft, COLORS.cherryGradientRight],
+                    start: [0, 1],
+                    end: [1, 0]
                   }
                 }}
                 _text={{
@@ -113,7 +130,7 @@ const HomeScreen = ({ navigation }) => {
             <Box
                 bg={{
                   linearGradient: {
-                    colors: ["red.400", "violet.400"],
+                    colors: [COLORS.cherryGradientLeft, COLORS.cherryGradientRight],
                     start: [1, 0],
                     end: [0, 1]
                   }

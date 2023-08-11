@@ -86,8 +86,9 @@ const GameSelectCard = ({
           borderRadius={20}
           p={2}
           borderColor={selected ? COLORS.green : COLORS.gray}
+          background={selected ? COLORS.green : "transparent"}
         >
-          <Icon name="check" color={selected ? COLORS.green : "transparent"} />
+          <Icon name="check" color={selected ? COLORS.white : "transparent"} />
         </Box>
       </Box>
 

@@ -134,9 +134,9 @@ function AddKidScreen({ navigation, route }) {
                     colorScheme="gray"
                   >
                     <Slider.Track>
-                      <Slider.FilledTrack backgroundColor={COLORS.secondary} />
+                      <Slider.FilledTrack backgroundColor={COLORS.primary} />
                     </Slider.Track>
-                    <Slider.Thumb backgroundColor={COLORS.secondary} />
+                    <Slider.Thumb backgroundColor={COLORS.primary} />
                   </Slider>
                   <Text position="absolute" top="20px" color={COLORS.gray}>
                     10mins
@@ -168,7 +168,7 @@ function AddKidScreen({ navigation, route }) {
           <Button
             isDisabled={info["name"] == "" || info["age"] == -1}
             w="48%"
-            backgroundColor={COLORS.secondary}
+            backgroundColor={COLORS.green}
             onPress={handleSave}
           >
             Save
@@ -178,7 +178,7 @@ function AddKidScreen({ navigation, route }) {
           <Button
             width="100%"
             mt={3}
-            colorScheme="danger"
+            backgroundColor={COLORS.primary}
             onPress={handleDelete}
           >
             Delete Kid

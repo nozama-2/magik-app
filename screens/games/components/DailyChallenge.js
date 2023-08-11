@@ -6,6 +6,16 @@ import { COLORS } from "../../../constants";
 const DailyChallenge = ({ challengesCompleted, totalChallenges }) => {
   return (
     <Box
+
+      bg={{
+        linearGradient: {
+          colors: [COLORS.tomatoGradientLeft, COLORS.tomatoGradientRight],
+          start: [0, 1],
+          end: [1, 0],
+        },
+      }}
+
+
       width="100%"
       height="120px"
       backgroundColor={COLORS.white}
@@ -19,14 +29,15 @@ const DailyChallenge = ({ challengesCompleted, totalChallenges }) => {
       justifyContent="space-between"
     >
       {/* Header */}
-      <Text fontSize={25} bold color={COLORS.secondary} mb={1}>
+      <Text fontSize={25} bold color={COLORS.white} mb={1}>
         Daily Challenges
       </Text>
 
       {/* Progress bar */}
       <Progress
         value={(challengesCompleted / totalChallenges) * 100}
-        _filledTrack={{ bg: COLORS.secondary }}
+        _filledTrack={{ bg: COLORS.white }}
+        backgroundColor={COLORS.gray}
       />
 
       {/* Fraction of games */}
@@ -36,13 +47,13 @@ const DailyChallenge = ({ challengesCompleted, totalChallenges }) => {
         justifyContent="center"
         alignItems="center"
       >
-        <Text fontSize={18} mx={0.5}>
+        <Text fontSize={18} mx={0.5} style={{color: COLORS.white, fontFamily: "Poppins-Bold"}}>
           {challengesCompleted}
         </Text>
-        <Text fontSize={18} mx={0.5}>
+        <Text fontSize={18} mx={0.5} style={{color: COLORS.white, fontFamily: "Poppins-Bold"}}>
           /
         </Text>
-        <Text fontSize={18}>{totalChallenges} Games</Text>
+        <Text fontSize={18} style={{color: COLORS.white, fontFamily: "Poppins-Bold"}}>{totalChallenges} Games</Text>
       </Box>
     </Box>
   );

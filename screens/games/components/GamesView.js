@@ -7,6 +7,7 @@ import GameCard from "./GameCard";
 
 import Filter from "./Filter";
 import { useSelector } from "react-redux";
+import { COLORS, images } from "../../../constants";
 
 const GamesView = ({ navigation, route, selectedProfile }) => {
   const allowedGames = useSelector(
@@ -67,7 +68,7 @@ const GamesView = ({ navigation, route, selectedProfile }) => {
         }}
       />
 
-      <ScrollView w="100%" h={400} px={2} showsVerticalScrollIndicator={false}>
+      <ScrollView w="100%" h={500} px={2} showsVerticalScrollIndicator={false}>
         {displayedGames.length == 0 && (
           <Box
             display="flex"
@@ -75,10 +76,12 @@ const GamesView = ({ navigation, route, selectedProfile }) => {
             alignItems="center"
             h="300px"
           >
-            <Text>No games to show...</Text>
+            <Text style={{fontFamily: "Poppins-Bold", fontSize: 20}}>No games to show...</Text>
             <Image
-              source={require("../../../assets/images/sadGif.gif")}
-              style={{ width: 100, height: 100 }}
+              // source={require("../../../assets/images/sadGif.gif")}
+              source={images.noImageIllustration}
+              resizeMode="contain"
+              style={{width: 100, maxHeight: 100}}
             />
           </Box>
         )}

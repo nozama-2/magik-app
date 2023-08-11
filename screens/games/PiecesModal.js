@@ -90,7 +90,7 @@ const PiecesModal = ({ route, navigation }) => {
           </Button>
           <Button
             w="55%"
-            backgroundColor={COLORS.secondary}
+            backgroundColor={COLORS.green}
             _text={{ bold: true }}
             onPress={handleStartGame}
             _pressed={{
