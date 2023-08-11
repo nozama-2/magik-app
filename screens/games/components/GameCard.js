@@ -99,12 +99,9 @@ const GameCard = ({
         style={{
           marginTop: 0,
           alignSelf: "center",
-          width: 50,
-          height: 50,
-          // shadowOpacity: 0.3,
-          // shadowRadius: 20,
-          // shadowColor: COLORS.black,
-          // shadowOffset: { height: 10, width: 0 }
+          width: 100,
+          height: 100,
+      
         }}
       />
 

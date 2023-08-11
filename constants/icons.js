@@ -42,10 +42,10 @@ export const starIcon = require("../assets/icons/star_icon.png");
 export const searchIcon = require("../assets/icons/search_icon.png");
 
 // Game images
-export const shapesIcon = require("../assets/images/games_images/shapeMatching.png");
-export const tangramIcon = require("../assets/images/games_images/tangram.png");
-export const numbersIcon = require("../assets/images/games_images/numbers.png");
-export const battleshipIcon = require("../assets/images/games_images/battleship.png");
+export const shapesIcon = require("../assets/images/games_images/3d-shapes.png");
+export const tangramIcon = require("../assets/images/games_images/3d-tangram.png");
+export const numbersIcon = require("../assets/images/games_images/3d-numbers.png");
+export const battleshipIcon = require("../assets/images/games_images/3d-battleship.png");
 
 export default {
   homeIconFilled,
