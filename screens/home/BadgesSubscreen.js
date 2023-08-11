@@ -1,11 +1,17 @@
 import React from "react";
 import { View, Text, StyleSheet, ScrollView, Image } from 'react-native';
 import { COLORS, icons } from "../../constants";
+
+import { t } from 'react-native-tailwindcss';
+
+import BadgesListItem from "./components/BadgeSubScreen/BadgesListItem";
+
+
 const BadgesSubscreen = ({ route, navigation }) => {
     return (
         <View>
-            <ScrollView style={styles.badgesHorizontal} horizontal={true} showsHorizontalScrollIndicator={false}>
-                    {Array.from(Array(2).keys()).map((e) => (
+            <ScrollView style={[styles.badgesHorizontal, {height: 100}]} horizontal={true} showsHorizontalScrollIndicator={false}>
+                    {Array.from(Array(1).keys()).map((e) => (
                         <>
                         <Image
                             source={icons.redBadgeIcon}
@@ -37,6 +43,11 @@ const BadgesSubscreen = ({ route, navigation }) => {
                         </>
                     ))}
                 </ScrollView>
+                <ScrollView style={[t.hFull, t.mT4, styles.badgesList]} showsVerticalScrollIndicator={false}>
+                    <BadgesListItem name="Red Diamond" description="Completed 100 puzzles" date="Aug 2023" />
+                    <BadgesListItem name="Blue Diamond" description="Completed 1000 puzzles" date="Sep 2023"/>
+                    <BadgesListItem name="Green Diamond" description="Completed 10 daily challenges" date="Jun 2023"/>
+                </ScrollView>
         </View>
     )
 }
@@ -54,6 +65,9 @@ const styles = StyleSheet.create({
     },
     badgesHorizontal: {
         marginTop: 30,
+    },
+    badgesList: {
+
     }
 })
 
