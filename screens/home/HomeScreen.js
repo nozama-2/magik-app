@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import {
   StyleSheet,
   Dimensions,
@@ -21,7 +21,6 @@ import ProfileActionsheet from "./components/ProfileActionsheet";
 import HomeTopNavigator from "./navigation/HomeTopNavigator";
 
 const HomeScreen = ({ navigation }) => {
-
   const getInitials = (name) => {
     let n = name.split(" ");
     let i = n.map((w) => w[0]);
@@ -52,21 +51,19 @@ const HomeScreen = ({ navigation }) => {
       <View style={styles.top}>
         <Spacer />
         <HomeTitle />
-        
-        
-        <TouchableOpacity onPress={onOpen}>
-            {profiles[selectedProfile["id"]]["img"] ? (
-              <Avatar
-                size="40px"
-                source={{ uri: profiles[selectedProfile["id"]]["img"] }}
-              />
-            ) : (
-              <Avatar size="40px">{getInitials(selectedProfile.name)}</Avatar>
-            )}
-          </TouchableOpacity>
-          
 
-          {/* Dropdown to select profile */}
+        <TouchableOpacity onPress={onOpen}>
+          {profiles[selectedProfile["id"]]["img"] ? (
+            <Avatar
+              size="40px"
+              source={{ uri: profiles[selectedProfile["id"]]["img"] }}
+            />
+          ) : (
+            <Avatar size="40px">{getInitials(selectedProfile.name)}</Avatar>
+          )}
+        </TouchableOpacity>
+
+        {/* Dropdown to select profile */}
         <ProfileActionsheet
           isOpen={isOpen}
           onClose={onClose}
@@ -74,7 +71,6 @@ const HomeScreen = ({ navigation }) => {
           profileArr={profileArr}
           setSelectedProfile={setSelectedProfile}
         />
-
       </View>
 
       {/* This is the main portion of the screen */}
@@ -85,40 +81,51 @@ const HomeScreen = ({ navigation }) => {
           <TouchableOpacity style={[styles.streaksContainer, styles.shadow]}>
             {/* The Streak text */}
             <Box
-                bg={{
-                  linearGradient: {
-                    colors: [COLORS.cherryGradientLeft, COLORS.cherryGradientRight],
-                    start: [0, 1],
-                    end: [1, 0]
-                  }
-                }}
-                _text={{
-                  fontSize: "md",
-                  fontWeight: "medium",
-                  color: "warmGray.50",
-                    textAlign: "center"
-                  }}
-                  style={[t.flex, t.flexRow, styles.circleRounded, t.mT4, styles.shadow]}
-                >
-
-              <View style={[t.flex, t.flexCol, styles.circleRounded, styles.streaksPadding]}>
-                <View style={[t.flex,t.flexRow]}>
+              bg={{
+                linearGradient: {
+                  colors: [COLORS.white, COLORS.white],
+                  start: [0, 1],
+                  end: [1, 0],
+                },
+              }}
+              _text={{
+                fontSize: "md",
+                fontWeight: "medium",
+                color: "warmGray.50",
+                textAlign: "center",
+              }}
+              style={[
+                t.flex,
+                t.flexRow,
+                styles.circleRounded,
+                t.mT4,
+                styles.shadow,
+              ]}
+            >
+              <View
+                style={[
+                  t.flex,
+                  t.flexCol,
+                  styles.circleRounded,
+                  styles.streaksPadding,
+                ]}
+              >
+                <View style={[t.flex, t.flexRow]}>
                   <Text style={[styles.streakNumber]}>11</Text>
-                    {/* The Streaks Icon Thumbnail */}
-                    <Image
-                      source={icons.streaksIcon}
-                      resizeMode="contain"
-                      style={{
-                        margin: 5,
-                        alignSelf: "center",
-                        width: 50,
-                        height: 50,
-                      }}
-                      />
+                  {/* The Streaks Icon Thumbnail */}
+                  <Image
+                    source={icons.streakCherry}
+                    resizeMode="cover"
+                    style={{
+                      margin: 5,
+                      alignSelf: "center",
+                      width: 50,
+                      height: 50,
+                    }}
+                  />
                 </View>
                 <Text style={[styles.streakSubtext]}>day streak!</Text>
               </View>
-
             </Box>
           </TouchableOpacity>
 
@@ -128,28 +135,34 @@ const HomeScreen = ({ navigation }) => {
           <TouchableOpacity style={[styles.screentimeContainer, styles.shadow]}>
             {/* The Streak text */}
             <Box
-                bg={{
-                  linearGradient: {
-                    colors: [COLORS.cherryGradientLeft, COLORS.cherryGradientRight],
-                    start: [1, 0],
-                    end: [0, 1]
-                  }
-                }}
-                _text={{
-                  fontSize: "md",
-                  fontWeight: "medium",
-                  color: "warmGray.50",
-                    textAlign: "center"
-                  }}
-                  style={[t.flex, t.flexRow, styles.circleRounded, t.mT4, styles.shadow]}
-                >
-                <Chart data={screenTime} />
-                </Box>
+              bg={{
+                linearGradient: {
+                  colors: [COLORS.white, COLORS.white],
+                  start: [1, 0],
+                  end: [0, 1],
+                },
+              }}
+              _text={{
+                fontSize: "md",
+                fontWeight: "medium",
+                color: "warmGray.50",
+                textAlign: "center",
+              }}
+              style={[
+                t.flex,
+                t.flexRow,
+                styles.circleRounded,
+                t.mT4,
+                styles.shadow,
+              ]}
+            >
+              <Chart data={screenTime} />
+            </Box>
           </TouchableOpacity>
         </View>
 
-            {/* Top Tabs Navigator */}
-            <HomeTopNavigator navigation={navigation} />
+        {/* Top Tabs Navigator */}
+        <HomeTopNavigator navigation={navigation} />
       </View>
     </View>
   );
@@ -165,8 +178,8 @@ const styles = StyleSheet.create({
   streaksContainer: {
     borderRadius: 1000,
     marginHorizontal: 10,
-    alignSelf: 'center',
-    justifyContent: 'center',
+    alignSelf: "center",
+    justifyContent: "center",
   },
   screentimeContainer: {
     borderRadius: 1000,
@@ -191,7 +204,7 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     justifyContent: "center",
-    alignSelf: 'center'
+    alignSelf: "center",
   },
   containerHome: {
     marginHorizontal: 10,
@@ -209,14 +222,14 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   streakNumber: {
-    color: COLORS.white,
+    color: COLORS.black,
     fontFamily: "Poppins-Bold",
     fontSize: 40,
     fontWeight: 700,
     alignSelf: "center",
   },
   streakSubtext: {
-    color: COLORS.white,
+    color: COLORS.darkgray,
     alignSelf: "center",
     fontWeight: 500,
     fontSize: 15,

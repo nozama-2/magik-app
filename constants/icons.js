@@ -13,6 +13,7 @@ export const profileIconUnfilled = require("../assets/icons/tab_icons/profile_ic
 
 // Home Icons
 export const streaksIcon = require("../assets/icons/home_icons/streaks_icon.png");
+export const streakCherry = require("../assets/icons/home_icons/streakCherry.png");
 export const puzzlesIcon = require("../assets/icons/home_icons/puzzle_icon.png");
 
 // Badges Icons
@@ -58,6 +59,7 @@ export default {
   profileIconUnfilled,
 
   streaksIcon,
+  streakCherry,
   puzzlesIcon,
   redBadgeIcon,
   blueBadgeIcon,

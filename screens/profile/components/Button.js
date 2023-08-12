@@ -29,7 +29,9 @@ function Button(props) {
         <Text
           style={[
             styles.text,
-            props.text === "Logout" ? { color: "#fff" } : { color: "#888899" },
+            props.text === "Logout"
+              ? { color: "#fff" }
+              : { color: COLORS.black },
           ]}
         >
           {" "}
@@ -39,7 +41,7 @@ function Button(props) {
       {props.text === "Logout" ? (
         <Ionicons style={[t.w5]} />
       ) : (
-        <Ionicons name="chevron-forward-outline" size={20} color="#9999aa" />
+        <Ionicons name="chevron-forward-outline" size={20} color={COLORS.red} />
       )}
     </TouchableOpacity>
   );

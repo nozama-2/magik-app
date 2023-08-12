@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Text, View, TouchableOpacity } from "react-native";
 import { Svg, G } from "react-native-svg"; // from "react-native-svg"
 import { pie } from "d3-shape";
-import { COLORS } from '../../../../constants'
+import { COLORS } from "../../../../constants";
 import PieSlice from "./DonutSlice";
 
 const Pie = ({ value, data, size, pieSize, onItemSelected }) => {
@@ -41,7 +41,7 @@ const Pie = ({ value, data, size, pieSize, onItemSelected }) => {
         >
           <Text
             style={{
-              color: COLORS.white,
+              color: COLORS.black,
               textAlign: "center",
               fontSize: 12,
               fontWeight: 500,
