@@ -20,7 +20,7 @@ import Chart from "./components/Chart/Index";
 import ProfileActionsheet from "./components/ProfileActionsheet";
 import HomeTopNavigator from "./navigation/HomeTopNavigator";
 
-const HomeScreen = ({ navigation }) => {
+const HomeScreen = ({ navigation, route }) => {
   const getInitials = (name) => {
     let n = name.split(" ");
     let i = n.map((w) => w[0]);
@@ -46,7 +46,7 @@ const HomeScreen = ({ navigation }) => {
   ];
 
   return (
-    <View style={styles.containerHome}>
+    <View style={styles.containerHome} onLayout={route.params.onLayoutRootView}>
       {/* This is the top section of the screen for title and action icons */}
       <View style={styles.top}>
         <Spacer />

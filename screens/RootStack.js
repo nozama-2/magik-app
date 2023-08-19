@@ -4,13 +4,17 @@ import TabStack from "./tab/TabStack";
 
 const Root = createStackNavigator();
 
-const RootStack = () => {
-
-    return (
-        <Root.Navigator screenOptions={{ headerShown: false }}>
-                <Root.Screen style={{zIndex: 999}} name="Tab" component={TabStack} />
-        </Root.Navigator>
-    )
-}
+const RootStack = ({ onLayoutRootView }) => {
+  return (
+    <Root.Navigator screenOptions={{ headerShown: false }}>
+      <Root.Screen
+        style={{ zIndex: 999 }}
+        name="Tab"
+        component={TabStack}
+        initialParams={{ onLayoutRootView }}
+      />
+    </Root.Navigator>
+  );
+};
 
 export default RootStack;
