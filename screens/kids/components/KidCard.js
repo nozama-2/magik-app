@@ -49,8 +49,12 @@ let KidCard = ({ id, isNormalCard, isPaddingCard, navigation }) => {
               </Text>
             </Flex>
 
-            <Text style={styles.ageText} fontSize="sm">{c.age} years old</Text>
-            <Text style={styles.limitText} fontSize="sm">Limit: {c.limit} mins</Text>
+            <Text style={styles.ageText} fontSize="sm">
+              {c.age} years old
+            </Text>
+            <Text style={styles.limitText} fontSize="sm">
+              Limit: {c.limit} mins
+            </Text>
           </Box>
 
           <TouchableOpacity
@@ -61,13 +65,11 @@ let KidCard = ({ id, isNormalCard, isPaddingCard, navigation }) => {
               });
             }}
           >
-              <Text style={styles.editKidText}>
-                Edit
-              </Text>
+            <Text style={styles.editKidText}>Edit</Text>
           </TouchableOpacity>
         </VStack>
       ) : (
-        <Pressable
+        <TouchableOpacity
           onPress={() => {
             navigation.push("Add kid");
           }}
@@ -84,7 +86,7 @@ let KidCard = ({ id, isNormalCard, isPaddingCard, navigation }) => {
               <Icon name="plus" color={COLORS.white} size={25} />
             </Flex>
           </Flex>
-        </Pressable>
+        </TouchableOpacity>
       )}
     </Box>
   ) : (
@@ -96,29 +98,29 @@ const styles = StyleSheet.create({
   nameText: {
     fontFamily: "Poppins-Bold",
     fontWeight: 700,
-    textAlign: 'center',
+    textAlign: "center",
   },
   ageText: {
     fontFamily: "Poppins-Regular",
     fontWeight: 400,
-    textAlign: 'center',
+    textAlign: "center",
   },
   limitText: {
     fontFamily: "Poppins-Regular",
     fontWeight: 400,
-    textAlign: 'center',
+    textAlign: "center",
   },
   editKidButton: {
     backgroundColor: COLORS.primary,
     borderRadius: 10,
     paddingVertical: 5,
-    marginBottom: 10
+    marginBottom: 10,
   },
   editKidText: {
-    textAlign: 'center',
+    textAlign: "center",
     color: COLORS.white,
     fontFamily: "Poppins-Bold",
     fontWeight: 600,
-  }
-})
+  },
+});
 export default KidCard;

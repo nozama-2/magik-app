@@ -93,7 +93,8 @@ const styles = StyleSheet.create({
     fontFamily: "Poppins-Regular",
     marginBottom: 10,
     marginTop: 17,
-    color: "#888899",
+    // color: "#888899",
+    color: COLORS.black,
     marginLeft: 3,
     fontWeight: 600,
   },
@@ -101,7 +102,8 @@ const styles = StyleSheet.create({
     width: "80%",
   },
   text: {
-    color: "#9999AA",
+    // color: "#9999AA",
+    color: COLORS.black,
     fontFamily: "Poppins-Normal",
   },
   individualRow: {

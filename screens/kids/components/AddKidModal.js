@@ -162,6 +162,7 @@ function AddKidScreen({ navigation, route }) {
             onPress={() => {
               navigation.goBack();
             }}
+            _pressed={{ opacity: 0.5 }}
           >
             Cancel
           </Button>
@@ -170,6 +171,7 @@ function AddKidScreen({ navigation, route }) {
             w="48%"
             backgroundColor={COLORS.green}
             onPress={handleSave}
+            _pressed={{ opacity: 0.5 }}
           >
             Save
           </Button>
@@ -180,6 +182,7 @@ function AddKidScreen({ navigation, route }) {
             mt={3}
             backgroundColor={COLORS.primary}
             onPress={handleDelete}
+            _pressed={{ opacity: 0.5 }}
           >
             Delete Kid
           </Button>

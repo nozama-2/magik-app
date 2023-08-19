@@ -1,11 +1,18 @@
 import React, { useState } from "react";
-import { StyleSheet, SafeAreaView, View, Text } from "react-native";
+import {
+  StyleSheet,
+  SafeAreaView,
+  View,
+  Text,
+  TouchableOpacity,
+} from "react-native";
 import { t } from "react-native-tailwindcss";
+import Icon from "react-native-vector-icons/FontAwesome";
+import { Divider, Box, Center, Flex } from "native-base";
+import { useSelector, useStore } from "react-redux";
 
 import { COLORS } from "../../constants/theme";
-import { Divider, Box, Center } from "native-base";
 import KidCardsDisplay from "./components/KidCardsDisplay";
-import { useSelector, useStore } from "react-redux";
 
 const KidsScreen = ({ navigation }) => {
   return (
