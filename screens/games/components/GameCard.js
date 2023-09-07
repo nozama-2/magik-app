@@ -32,8 +32,9 @@ const GameCard = ({
   const e = {
     tangram: icons.tangramIcon,
     "matching shapes": icons.shapesIcon,
-    numbers: icons.numbersIcon,
+    equations: icons.numbersIcon,
     battleship: icons.battleshipIcon,
+    codecars: icons.codecarsIcon,
   };
 
   return (
