@@ -6,6 +6,7 @@ import {
   tangramIcon,
   numbersIcon,
   battleshipIcon,
+  codecarsIcon,
 } from "../../constants/icons";
 import { useStore } from "react-redux";
 
@@ -14,12 +15,15 @@ const PiecesModal = ({ route, navigation }) => {
     "Shape Piece": tangramIcon,
     "Number Blocks": numbersIcon,
     Ships: battleshipIcon,
+    CodeBlocks: codecarsIcon,
   };
 
   const name = route.params.name;
   const game = useStore()
     .getState()
     .games.filter((x) => x.name == name)[0];
+
+  console.log(game);
 
   const handleStartGame = () => {
     // Start the game here

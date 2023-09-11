@@ -47,6 +47,7 @@ export const shapesIcon = require("../assets/images/games_images/3d-shapes.png")
 export const tangramIcon = require("../assets/images/games_images/3d-tangram.png");
 export const numbersIcon = require("../assets/images/games_images/3d-numbers.png");
 export const battleshipIcon = require("../assets/images/games_images/3d-battleship.png");
+export const codecarsIcon = require("../assets/images/games_images/codecars-3d.png");
 
 export default {
   homeIconFilled,
@@ -89,4 +90,5 @@ export default {
   tangramIcon,
   numbersIcon,
   battleshipIcon,
+  codecarsIcon,
 };

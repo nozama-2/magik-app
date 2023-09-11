@@ -21,29 +21,18 @@ const GamesView = ({ navigation, route, selectedProfile }) => {
   const [displayedGames, setDisplayedGames] = useState(games);
 
   useEffect(() => {
-    if (filters.isPurchased) {
-      setDisplayedGames(
-        games
-          .filter((g) => allowedGames.includes(g.name))
-          .filter(
-            (game) =>
-              filters.gameCategory == "all" ||
-              game.category == filters.gameCategory
-          )
-      );
-    } else {
-      setDisplayedGames(
-        games
-          .filter((game) =>
-            filters.isPurchased ? game.purchased : !game.purchased
-          )
-          .filter(
-            (game) =>
-              filters.gameCategory == "all" ||
-              game.category == filters.gameCategory
-          )
-      );
-    }
+    setDisplayedGames(
+      games
+        .filter((game) =>
+          filters.isPurchased ? game.purchased : !game.purchased
+        )
+        .filter((g) => allowedGames.includes(g.name))
+        .filter(
+          (game) =>
+            filters.gameCategory == "all" ||
+            game.category == filters.gameCategory
+        )
+    );
   }, [filters, games, allowedGames]);
 
   const splitIntoTwo = (array) => {
@@ -76,12 +65,14 @@ const GamesView = ({ navigation, route, selectedProfile }) => {
             alignItems="center"
             h="300px"
           >
-            <Text style={{fontFamily: "Poppins-Bold", fontSize: 20}}>No games to show...</Text>
+            <Text style={{ fontFamily: "Poppins-Bold", fontSize: 20 }}>
+              No games to show...
+            </Text>
             <Image
               // source={require("../../../assets/images/sadGif.gif")}
               source={images.noImageIllustration}
               resizeMode="contain"
-              style={{width: 100, maxHeight: 100}}
+              style={{ width: 100, maxHeight: 100 }}
             />
           </Box>
         )}

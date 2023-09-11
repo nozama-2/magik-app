@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Box, Text, ScrollView, Center } from "native-base";
+import { t } from "react-native-tailwindcss";
+
 import ButtonGame from "./ButtonGame";
 import { COLORS } from "../../../../constants";
-import { t } from 'react-native-tailwindcss';
 
 const PastPuzzles = ({}) => {
   return (
@@ -16,19 +17,32 @@ const PastPuzzles = ({}) => {
       >
         Past Games
       </Text>
+
       <ScrollView showsVerticalScrollIndicator={false} style={[t.hFull]}>
-        <Center w="100%">
-          {Array.from(Array(7).keys()).map((e) => {
-            return (
-              <ButtonGame
-                text={`Game ${e + 1}`}
-                lastPlayed={new Date()}
-                icon="extension-puzzle-outline"
-                onPress={() => console.log("")}
-              />
-            );
-          })}
-        </Center>
+        {Array.from(Array(50).keys()).map((i) => (
+          <Center
+            w="100%"
+            display="flex"
+            flexDir="row"
+            justifyContent="space-around"
+            alignItems="flex-start"
+          >
+            <ButtonGame
+              text={`Game ${2 * i + 1}`}
+              lastPlayed={new Date()}
+              icon="extension-puzzle-outline"
+              id={2 * i + 1}
+              onPress={() => console.log("")}
+            />
+            <ButtonGame
+              text={`Game ${2 * i + 2}`}
+              lastPlayed={new Date()}
+              icon="extension-puzzle-outline"
+              id={2 * i + 2}
+              onPress={() => console.log("")}
+            />
+          </Center>
+        ))}
       </ScrollView>
     </Box>
   );

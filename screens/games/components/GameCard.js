@@ -79,7 +79,7 @@ const GameCard = ({
             navigation.push("InfoModal", { name: name, info: info })
           }
         >
-          <Image
+        <Image
             source={icons.infoIcon}
             resizeMode="contain"
             style={{
@@ -102,7 +102,6 @@ const GameCard = ({
           alignSelf: "center",
           width: 100,
           height: 100,
-      
         }}
       />
 

@@ -23,6 +23,7 @@ import TangramScreen from "./tangram/TangramScreen";
 import MatchingShapesScreen from "./matchingShapes/MatchingShapesScreen";
 import NumbersScreen from "./numbers/NumbersScreen";
 import BattleshipScreen from "./battleship/BattleshipScreen";
+import CodecarsScreen from "./codecars/CodecarsScreen";
 import GameInProgress from "./GameInProgress";
 import GamePurchase from "./GamePurchase";
 import GameFilterModal from "./GameFilterModal";
@@ -52,8 +53,9 @@ const GamesStack = ({ route, navigation }) => {
       <Games.Group>
         <Games.Screen name="Tangram" component={TangramScreen} />
         <Games.Screen name="Matching Shapes" component={MatchingShapesScreen} />
-        <Games.Screen name="Numbers" component={NumbersScreen} />
+        <Games.Screen name="Equations" component={NumbersScreen} />
         <Games.Screen name="Battleship" component={BattleshipScreen} />
+        <Games.Screen name="CodeCars" component={CodecarsScreen} />
       </Games.Group>
 
       {/* These are all the modals */}

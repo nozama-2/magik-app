@@ -1,28 +1,64 @@
-import React, { Fragment, useContext } from "react";
-import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
+import React, { Fragment, useContext, useEffect, useState } from "react";
+import {
+  StyleSheet,
+  View,
+  Text,
+  TouchableOpacity,
+  Image,
+  Dimensions,
+} from "react-native";
 import { t } from "react-native-tailwindcss";
 import Ionicons from "react-native-vector-icons/Ionicons";
-import Icon from "react-native-vector-icons/FontAwesome";
-import { COLORS } from "../../../../constants";
+import axios from "axios";
 
-function ButtonGame({ onPress, text, lastPlayed }) {
+import { COLORS, images } from "../../../../constants";
+import { Center, Box } from "native-base";
+
+function ButtonGame({ onPress, text, lastPlayed, id }) {
+  const [img, setImg] = useState("");
+  useEffect(() => {
+    axios
+      .post("http://190.92.208.177:8000/tangram/get_puzzle_image", {
+        puzzle_id: id,
+      })
+      .then((r) => {
+        setImg(r.data.image);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
   return (
     <TouchableOpacity
       style={[styles.container, { backgroundColor: "#F6F6F6" }]}
       onPress={onPress}
     >
-      <View style={[t.w1_6, t._mL2]}>
-        <Icon name="gamepad" size={20} color="#9999aa" />
-      </View>
+      <Center>
+        <Center style={[t.w1_6, t._mL2]}>
+          <Image
+            style={{
+              width: 100,
+              height: 100,
+              marginBottom: 10,
+            }}
+            source={{ uri: `data:image/jpeg;base64,${img}` }}
+          />
 
-      <View style={[t.justifyStart, t.w4_6, t.mR8]}>
-        <Text style={[styles.text1, { color: COLORS.darkgray }]}>{text}</Text>
-        <Text style={[styles.text2, { color: COLORS.darkgray }]}>
-          Played: {lastPlayed.toDateString()}
-        </Text>
-      </View>
+          {/* <Icon name="gamepad" size={20} color="#9999aa" /> */}
+        </Center>
 
-      <Ionicons name="chevron-forward-outline" size={20} color="#9999aa" />
+        <Box display="flex" flexDir="row" alignItems="flex-end">
+          <View style={[t.justifyStart, t.w4_6, t.mR8]}>
+            <Text style={[styles.text1, { color: COLORS.darkgray }]}>
+              {text}
+            </Text>
+            <Text style={[styles.text2, { color: COLORS.darkgray }]}>
+              {lastPlayed.toDateString()}
+            </Text>
+          </View>
+
+          <Ionicons name="chevron-forward-outline" size={20} color="#9999aa" />
+        </Box>
+      </Center>
     </TouchableOpacity>
   );
 }
@@ -35,28 +71,25 @@ const styles = StyleSheet.create({
     color: "#888899",
   },
   text1: {
-    fontFamily: "Poppins-Regular",
-    fontWeight: 700,
+    // fontFamily: "Poppins-Bold",
+    fontWeight: 600,
+    textDecorationLine: "underline",
   },
   text2: {
     fontFamily: "Poppins-Regular",
     fontWeight: 300,
   },
   container: {
-    height: 54,
-    flexDirection: "row",
-    marginHorizontal: 10,
-    borderRadius: 14,
+    backgroundColor: COLORS.white,
+    borderRadius: 8,
     alignItems: "center",
-    justifyContent: "space-between",
-    paddingHorizontal: 20,
-    backgroundColor: "white",
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.2,
-    shadowRadius: 0.5,
-    borderRadius: 14,
-    marginBottom: 5,
+    width: Dimensions.get("window").width / 2 - 30,
+    padding: 20,
+    marginBottom: 20,
+    shadowOpacity: 0.05,
+    shadowRadius: 10,
+    shadowColor: COLORS.black,
+    shadowOffset: { height: 0, width: 0 },
   },
 });
 

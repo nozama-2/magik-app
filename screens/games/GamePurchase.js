@@ -11,6 +11,7 @@ const GamePurchase = ({ route, navigation }) => {
     "matching shapes": icons.shapesIcon,
     numbers: icons.numbersIcon,
     battleship: icons.battleshipIcon,
+    codecars: icons.codecarsIcon,
   };
 
   const colorCatMap = {
